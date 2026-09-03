@@ -8,6 +8,7 @@ import {
   initCartridgeCards
 } from './hardware.js';
 import { initEventStream } from './sandbox.js';
+import { initNewspaperPagination } from './newspaper.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initHeroVideos();
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCartridgeDock();
   initCartridgeCards();
   initEventStream();
+  initNewspaperPagination();
 
-  console.log("⚡ Industrial Hardware Blueprint & Dual 1080p Videos Initialized");
+  console.log("⚡ Industrial Hardware Blueprint & Daily Telemetry Pagination Initialized");
 });

@@ -492,85 +492,282 @@
         <div class="broadsheet-dateline-bar">
           <span>CYRIL NWACHUKWU // ESSAYS &amp; ARCHITECTURAL POST-MORTEMS</span>
           <span>JUNE 13, 2026</span>
-          <span>VERIFIED SYSTEMS MONOGRAPH</span>
+          <span>EDITION <span id="newspaper-current-page-num" style="color:var(--safety-orange); font-weight:800;">01</span> OF 03</span>
+        </div>
+
+        <!-- Interactive Edition Navigation Bar -->
+        <div class="newspaper-edition-bar">
+          <button class="newspaper-page-nav-btn prev" id="btn-newspaper-prev" aria-label="Previous Page">◄ PREV EDITION</button>
+          <div class="newspaper-page-tabs" role="tablist" aria-label="Newspaper Editions">
+            <button class="newspaper-page-tab active" data-page="1" role="tab" aria-selected="true">
+              <span class="tab-edition">PAGE 01</span>
+              <span>Core Invariants &amp; Boundaries</span>
+            </button>
+            <button class="newspaper-page-tab" data-page="2" role="tab" aria-selected="false">
+              <span class="tab-edition">PAGE 02</span>
+              <span>Confidence, Slicing &amp; Caching</span>
+            </button>
+            <button class="newspaper-page-tab" data-page="3" role="tab" aria-selected="false">
+              <span class="tab-edition">PAGE 03</span>
+              <span>Test Rigor &amp; Scoring Systems</span>
+            </button>
+          </div>
+          <button class="newspaper-page-nav-btn next" id="btn-newspaper-next" aria-label="Next Page">NEXT EDITION ►</button>
         </div>
       </header>
 
-      <!-- 3-Column Broadsheet Articles -->
-      <div class="broadsheet-columns">
-        
-        <!-- Column 1 -->
-        <article class="broadsheet-article">
-          <span class="article-category">ARCHITECTURAL INVARIANTS</span>
-          <h3 class="article-headline">The 3 Invariants of Production AI Agents</h3>
-          <p class="article-subhead">
-            It is 2:00 AM. Your agent spent $45 in API credits rewording the same sentence six times. Here is how to survive in production.
-          </p>
-          <div class="article-body">
-            <p>
-              Most agent tutorials show you how to build a prototype in twenty lines of code. Almost none show you how to make it survive production traffic. When you build stateful, cyclical workflows in LangGraph, you need three non-negotiable architectural anchors:
-            </p>
-            <div class="article-quote-box">
-              <strong>Rule 1: Deterministic Control Flow</strong><br />
-              An LLM is a probabilistic token generator. It should never decide whether a loop terminates or which branch executes. Pure Python checks boolean policies, score thresholds, and iteration ceilings.
-            </div>
-            <p>
-              <strong>Rule 2: Channel Reducers over Shared Variables.</strong> Under Pregel execution, parallel nodes do not mutate a shared dictionary in memory. They emit delta updates during a superstep. If two parallel evaluator judges return updates to the same channel without an explicit reducer, the last node silently erases the first.
-            </p>
-            <p>
-              <strong>Rule 3: Side-Effect Isolation.</strong> External mutations—sending emails, charging cards, calling webhooks—belong in the host wrapper that invokes the graph, never inside node bodies. Otherwise, those side-effects fire repeatedly during test runs, rollbacks, and replays.
-            </p>
-          </div>
-        </article>
+      <!-- Pages Container -->
+      <div class="broadsheet-pages-container">
 
-        <!-- Column 2 -->
-        <article class="broadsheet-article">
-          <span class="article-category">COST &amp; CACHING OBSERVABILITY</span>
-          <h3 class="article-headline">Beyond The Prompt: The 70K Token Blowup</h3>
-          <p class="article-subhead">
-            The entire build of agentpipe started from a single number measured on a real pipeline: 70,000 tokens of input to produce 100 tokens of output.
-          </p>
-          <div class="article-body">
-            <p>
-              The agent worked fine. It just cost a fortune, quietly, and nobody noticed because nothing ever threw an error. Money was the only symptom. So I rebuilt it with measurement first. Four core lessons emerged:
+        <!-- ================================================================
+             PAGE 1: Core Invariants & Boundaries
+             ================================================================ -->
+        <div class="broadsheet-page active" data-page-index="1" id="newspaper-page-1">
+          
+          <!-- Page 1, Article 1 -->
+          <article class="broadsheet-article">
+            <span class="article-category">ARCHITECTURAL INVARIANTS</span>
+            <h3 class="article-headline">The 3 Invariants of Production AI Agents</h3>
+            <p class="article-subhead">
+              It is 2:00 AM. Your agent spent $45 in API credits rewording the same sentence six times. Here is how to survive in production.
             </p>
-            <p>
-              <strong>1. Rebuild, don't accumulate.</strong> That 70k blowup happened because every retry re-read all previous attempts. My loop rebuilds its context from the repository as it is now, so attempt four costs about the same as attempt one.
-            </p>
-            <div class="article-quote-box">
-              <strong>"It works" needs a number.</strong><br />
-              Putting stable content first earned a caching discount: 92% of repeated prompts billed at the cached rate. But only above the provider's ~1,024-token threshold. The honest version has numbers, not claims.
+            <div class="article-body">
+              <p>
+                Most agent tutorials show you how to build a prototype in twenty lines of code. Almost none show you how to make it survive production traffic. When you build stateful, cyclical workflows in LangGraph, you need three non-negotiable architectural anchors:
+              </p>
+              <div class="article-quote-box">
+                <strong>Rule 1: Deterministic Control Flow</strong><br />
+                An LLM is a probabilistic token generator. It should never decide whether a loop terminates or which branch executes. Pure Python checks boolean policies, score thresholds, and iteration ceilings.
+              </div>
+              <p>
+                <strong>Rule 2: Channel Reducers over Shared Variables.</strong> Under Pregel execution, parallel nodes do not mutate a shared dictionary in memory. They emit delta updates during a superstep. If two parallel evaluator judges return updates to the same channel without an explicit reducer (<code>Annotated[dict, merge_evaluations]</code>), the last node silently erases the first.
+              </p>
+              <p>
+                <strong>Rule 3: Side-Effect Isolation.</strong> External mutations—sending emails, charging cards, calling webhooks—belong in the host wrapper that invokes the graph, never inside node bodies. Otherwise, those side-effects fire repeatedly during test runs, rollbacks, and replays.
+              </p>
             </div>
-            <p>
-              <strong>2. The counter is a hint; the repo is the truth.</strong> I made the loop survive a crash by refusing to trust my own attempt counter and always re-checking the actual files on disk. You cannot silently skip work you never assumed was finished.
-            </p>
-          </div>
-        </article>
+          </article>
 
-        <!-- Column 3 -->
-        <article class="broadsheet-article">
-          <span class="article-category">EVALUATION GATES</span>
-          <h3 class="article-headline">The Judge Needs A Check Too</h3>
-          <p class="article-subhead">
-            Stop asking one giant prompt to grade everything. Why specialized single-purpose judges running in parallel beat generalists every time.
-          </p>
-          <div class="article-body">
-            <p>
-              When an LLM evaluates five competing dimensions in one pass, it suffers from attention dilution. It misses subtle hallucinations because it was busy grading tone. In our client report agent, we solved this using LangGraph's Send() API:
+          <!-- Page 1, Article 2 -->
+          <article class="broadsheet-article">
+            <span class="article-category">DETERMINISTIC BOUNDARIES</span>
+            <h3 class="article-headline">Stop Letting The LLM Do The Math</h3>
+            <p class="article-subhead">
+              For a while, I had my evaluation agent's LLM judge calculate its own final score. Made sense at first: it already knew the three dimensions. Then came the drift.
             </p>
-            <p>
-              <strong>1. Dynamic Fan-Out:</strong> Spawns three specialized judges concurrently: eval_accuracy strictly checks facts against transcript; eval_clarity checks structure; eval_completeness checks requirement coverage.
-            </p>
-            <div class="article-quote-box">
-              <strong>The False-Pass Metric:</strong><br />
-              A judge scoring 98% overall with 80% agreement on critical cases is dangerous. Judge A with 96% overall but 99% critical agreement is the one you want.
+            <div class="article-body">
+              <p>
+                For a while, I had my evaluation agent's LLM judge calculate its own final score. It made sense at first: it already knew the three dimensions, so why not have it add them up too? Then I noticed the exact same report, evaluated twice, would sometimes come back with a slightly different final number. Nothing dramatic. Just enough drift to make routing decisions unreliable.
+              </p>
+              <div class="article-quote-box">
+                <strong>Probabilistic Variance vs. Fixed Weights:</strong><br />
+                The LLM is probabilistic. Every time you ask it to do something deterministic—arithmetic, applying a fixed weight, enforcing a threshold—you are letting variance into a decision that should never vary.
+              </div>
+              <p>
+                <strong>Moving the Line:</strong> The LLM evaluates: it scores each dimension, provides a reason, and emits a confidence signal. Pure Python does everything after that: validates the schema, applies the fixed weights, checks the hard gates, and executes routing. Deterministic, cheap, auditable, testable.
+              </p>
+              <p>
+                That single boundary—<strong>LLM judges, Python decides</strong>—has mattered more than any other decision in this build. Where in your pipeline is a probabilistic model quietly doing a job that belongs to plain, reliable code?
+              </p>
             </div>
-            <p>
-              Deterministic code downstream can only be as trustworthy as the data it is handed. An impossible number (like 1.7 on a 1.0 scale) is not a low quality score; it is a broken contract. Check the measurement before you conclude the work is bad.
-            </p>
-          </div>
-        </article>
+          </article>
 
+          <!-- Page 1, Article 3 -->
+          <article class="broadsheet-article">
+            <span class="article-category">EVALUATION GATES</span>
+            <h3 class="article-headline">The Judge Needs A Check Too</h3>
+            <p class="article-subhead">
+              An LLM judge can look excellent during development and still not be production-ready. 10 out of 10 on known examples and 32 out of 50 on unseen ones.
+            </p>
+            <div class="article-body">
+              <p>
+                An LLM judge can look excellent during development and still not be production-ready. It might have learned the patterns in the examples you gave it without actually generalizing the underlying skill of evaluation.
+              </p>
+              <p>
+                You catch this the same way you catch it in the agent itself: test the judge against unseen cases and against trusted reference labels. 10 out of 10 on known examples and 32 out of 50 on unseen ones tells you the judge memorized; it didn't learn.
+              </p>
+              <div class="article-quote-box">
+                <strong>The Critical Agreement Trap:</strong><br />
+                Judge A scores 96% overall with 99% agreement on critical cases. Judge B scores 98% overall with only 80% agreement on critical cases. Judge B wins the headline number; Judge A is the one you actually want in production.
+              </div>
+              <p>
+                When a judge sits on a decision with real consequences, being reliable where it counts matters far more than being right on average. Not all evaluator disagreements cost the same. Weight your judge evaluations accordingly.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- ================================================================
+             PAGE 2: Confidence, Slicing & Caching
+             ================================================================ -->
+        <div class="broadsheet-page" data-page-index="2" id="newspaper-page-2">
+          
+          <!-- Page 2, Article 1 -->
+          <article class="broadsheet-article">
+            <span class="article-category">CONFIDENCE CALIBRATION</span>
+            <h3 class="article-headline">A Number And Its Certainty Are Two Different Signals</h3>
+            <p class="article-subhead">
+              "Score: 0.84, confidence: 0.95" and "Score: 0.84, confidence: 0.42" are not the same evaluation, even though the score is identical.
+            </p>
+            <div class="article-body">
+              <p>
+                The first evaluation says: I evaluated this and I am sure. The second says: I evaluated this and I am not sure I got it right. Treating them identically is one of the most common failure modes in automated eval pipelines.
+              </p>
+              <p>
+                <strong>Track confidence per dimension,</strong> not as one blended number for the whole evaluation. Accuracy, clarity, and completeness can each carry a different level of certainty. Lumping them together buries exactly the information you need: which specific part of the judgment is actually shaky.
+              </p>
+              <div class="article-quote-box">
+                <strong>Actionable Routing vs. Vague Signals:</strong><br />
+                "Confidence: low" tells you almost nothing. "The transcript doesn't specify whether the client's location requirement is mandatory" tells human reviewers exactly what to look at.
+              </div>
+              <p>
+                Low confidence on any dimension is an automatic signal to route to a human, along with the specific reason the judge was uncertain. And never take stated confidence at face value: a model claiming 97% confidence needs to be empirically checked against real outcomes before you trust it.
+              </p>
+            </div>
+          </article>
+
+          <!-- Page 2, Article 2 -->
+          <article class="broadsheet-article">
+            <span class="article-category">METRIC GRANULARITY</span>
+            <h3 class="article-headline">One Number Can Hide A Real Problem</h3>
+            <p class="article-subhead">
+              Overall score: 95%. Looks like a healthy system. Break it down: normal cases score 99%, critical cases score 60%.
+            </p>
+            <div class="article-body">
+              <p>
+                The 95% headline was hiding a serious issue the entire time, because normal cases outnumber critical ones and drag the average up. This is why a single aggregate score is never enough for production systems.
+              </p>
+              <p>
+                You need to slice performance by category: critical requests, ambiguous requests, constraint-heavy requests, multi-step requests, long transcripts versus short ones, and cases the system hasn't seen before. Each slice answers a different question about where the system actually struggles.
+              </p>
+              <div class="article-quote-box">
+                <strong>Averages vs. Slices:</strong><br />
+                The global average tells you how the system performs on average. The slices tell you how it performs where it matters. Those are not the same question.
+              </div>
+              <p>
+                Only checking the headline number means you will ship a system that looks fine on a dashboard and fails in exactly the situations you can least afford it to. Granular slicing is the only antidote to false security.
+              </p>
+            </div>
+          </article>
+
+          <!-- Page 2, Article 3 -->
+          <article class="broadsheet-article">
+            <span class="article-category">COST &amp; CACHING OBSERVABILITY</span>
+            <h3 class="article-headline">Beyond The Prompt: The 70K Token Blowup</h3>
+            <p class="article-subhead">
+              The entire build of agentpipe started from a single number measured on a real pipeline: 70,000 tokens of input to produce 100 tokens of output.
+            </p>
+            <div class="article-body">
+              <p>
+                The agent worked fine. It just cost a fortune, quietly, and nobody noticed because nothing ever threw an error. Money was the only symptom. Rebuilding it with measurement-first observability revealed the core fixes:
+              </p>
+              <p>
+                <strong>1. Rebuild, don't accumulate.</strong> That 70k blowup happened because every retry re-read all previous attempts. My loop rebuilds its context from the repository as it is now, so attempt four costs about the same as attempt one.
+              </p>
+              <div class="article-quote-box">
+                <strong>"It works" needs a number:</strong><br />
+                Putting stable content first earned a caching discount: 92% of repeated prompts billed at the cached rate. But only above the provider's ~1,024-token threshold. The honest version has numbers, not claims.
+              </div>
+              <p>
+                <strong>2. The counter is a hint; the repo is the truth.</strong> I made the loop survive a crash by refusing to trust my own attempt counter and always re-checking the actual files on disk. You cannot silently skip work you never assumed was finished.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- ================================================================
+             PAGE 3: Test Rigor & Scoring Systems
+             ================================================================ -->
+        <div class="broadsheet-page" data-page-index="3" id="newspaper-page-3">
+          
+          <!-- Page 3, Article 1 -->
+          <article class="broadsheet-article">
+            <span class="article-category">GENERALIZATION RIGOR</span>
+            <h3 class="article-headline">Passing Your Test Set Proves Almost Nothing</h3>
+            <p class="article-subhead">
+              Run your agent against 10 familiar examples and score 100%. Feels like proof. It isn't.
+            </p>
+            <div class="article-body">
+              <p>
+                Run your agent against 10 familiar examples and score 100%. Feels like proof. It isn't. That result tells you the system got good at those 10 examples. It says nothing about the cases it hasn't seen, and production is mostly cases it hasn't seen.
+              </p>
+              <p>
+                A good evaluation set covers normal cases, edge cases, ambiguous requests, constraint-heavy requests, and cases you would consider critical if they went wrong. The question is not "can it pass these examples," it is "does it behave correctly across the kinds of situations it will actually meet?"
+              </p>
+              <div class="article-quote-box">
+                <strong>Dev Data vs. Holdout Data:</strong><br />
+                If a prompt change pushes your dev score from 95% to 99% but your holdout score drops from 91% to 82%, that is not progress. That is the system getting better at the examples you are staring at and worse at everything else.
+              </div>
+              <p>
+                Holdout data is never used for tuning; it is only used to check generalization. Holdout performance is the closer approximation of what production will actually look like.
+              </p>
+            </div>
+          </article>
+
+          <!-- Page 3, Article 2 -->
+          <article class="broadsheet-article">
+            <span class="article-category">SCORING ARCHITECTURE</span>
+            <h3 class="article-headline">Why The Weights Aren't 33 / 33 / 33</h3>
+            <p class="article-subhead">
+              Once task completion passes, you still need to know how good the report actually is. That's where multi-dimensional scoring comes in.
+            </p>
+            <div class="article-body">
+              <p>
+                Once task completion passes, you still need to know how good the report actually is. That's where multi-dimensional scoring comes in: Accuracy (35%), Clarity (35%), and Completeness (30%). Three questions, three deliberate weights.
+              </p>
+              <p>
+                <strong>Accuracy and clarity carry equal weight</strong> because both are non-negotiable to the person reading the report. A technically accurate answer they cannot understand has limited value. A clear answer that is wrong is worse.
+              </p>
+              <div class="article-quote-box">
+                <strong>Deliberate Failure Costing:</strong><br />
+                Completeness sits lower on purpose. An imperfectly complete report is a smaller problem than a report that is directly wrong or unclear. Decide, on purpose, which failures cost more, instead of defaulting to equal splits because equal feels fair.
+              </div>
+              <p>
+                The specific numbers matter less than the exercise behind them: decide, on purpose, which failures cost more, and let the mathematical weighting reflect that consequence.
+              </p>
+            </div>
+          </article>
+
+          <!-- Page 3, Article 3 -->
+          <article class="broadsheet-article">
+            <span class="article-category">PRODUCTION ARCHITECTURE</span>
+            <h3 class="article-headline">The Production Frame: LLM Evaluates, Python Decides</h3>
+            <p class="article-subhead">
+              The difference between a toy demo and an industrial system is not the model you call. It is the deterministic frame you place around it.
+            </p>
+            <div class="article-body">
+              <p>
+                When you distill hundreds of hours of debugging stateful agents and evaluating automated workflows, one rule eclipses all others: keep probabilistic models inside narrow, structured boundaries, and let deterministic code govern state transitions.
+              </p>
+              <p>
+                The LLM is tasked with what it excels at: semantic parsing, extraction, comparative judgment, and structured reasoning with confidence metadata. Pure Python handles everything downstream: DAG channel reducers, SQLite/Postgres checkpointer state, OpenTelemetry span baggage, and fail-fast evaluation gates.
+              </p>
+              <div class="article-quote-box">
+                <strong>The Core Tenet of agentpipe:</strong><br />
+                Never trust a model to calculate arithmetic, decide loop terminations, or execute side-effects. Wrap probabilistic intelligence in a crash-safe, deterministic machine.
+              </div>
+              <p>
+                Software fundamentals matter more in the age of AI than ever before. If you build stateful agent workflows, engineer the deterministic frame first, and the models will finally perform reliably in production.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+
+      <!-- Bottom Pagination Bar -->
+      <div class="newspaper-bottom-pagination">
+        <span class="pagination-legend mono">EDITION NAVIGATION // 9 MONOGRAPHS LOADED</span>
+        <div class="pagination-buttons">
+          <button class="page-num-btn prev-btn" id="bottom-btn-prev">◄ PREV</button>
+          <button class="page-num-btn active" data-page="1">1</button>
+          <button class="page-num-btn" data-page="2">2</button>
+          <button class="page-num-btn" data-page="3">3</button>
+          <button class="page-num-btn next-btn" id="bottom-btn-next">NEXT ►</button>
+        </div>
       </div>
 
       <!-- Broadsheet Footer -->
