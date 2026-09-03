@@ -738,11 +738,11 @@
 
 .cartridge-card {
   background: var(--surface-raised);
-  border: 2px solid var(--machined-black);
+  border: 2px solid transparent;
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: var(--shadow-cartridge);
-  transition: transform 0.25s var(--spring-smooth), box-shadow 0.25s var(--spring-smooth);
+  box-shadow: 0 4px 14px rgba(17, 18, 20, 0.05);
+  transition: transform 0.25s var(--spring-smooth), box-shadow 0.25s var(--spring-smooth), border-color 0.2s ease;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -750,6 +750,7 @@
 }
 
 .cartridge-card:hover {
+  border-color: var(--machined-black);
   transform: translateY(-6px) rotate(-0.5deg);
   box-shadow: var(--shadow-cartridge-hover);
 }
@@ -839,10 +840,10 @@
 
 .gauges-card {
   background: var(--surface-panel);
-  border: 2px solid var(--machined-black);
+  border: none;
   border-radius: 8px;
   padding: 2rem;
-  box-shadow: 6px 6px 0px rgba(18, 19, 20, 0.12);
+  box-shadow: none;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 2.5rem;
