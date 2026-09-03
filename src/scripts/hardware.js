@@ -70,7 +70,29 @@ class MechanicalAudio {
 
 export const soundFx = new MechanicalAudio();
 
-// 1. Interactive Synthesizer Console (Video 2244 & Hero)
+// 0. Hero Dual 1080p Video Playback Controls
+export function initHeroVideos() {
+  const chassisList = document.querySelectorAll('.hero-video-chassis');
+  chassisList.forEach((chassis) => {
+    const video = chassis.querySelector('video');
+    const toggleBtn = chassis.querySelector('.video-toggle-btn');
+    if (!video) return;
+
+    const togglePlayback = () => {
+      soundFx.playClick('button');
+      if (video.paused) {
+        video.play();
+        if (toggleBtn) toggleBtn.textContent = 'PAUSE / PLAY';
+      } else {
+        video.pause();
+        if (toggleBtn) toggleBtn.textContent = 'RESUME ▶';
+      }
+    };
+
+    if (toggleBtn) toggleBtn.addEventListener('click', togglePlayback);
+    video.addEventListener('click', togglePlayback);
+  });
+}
 export function initConsoleControls() {
   // Chrome metal bat toggles
   const batUnits = document.querySelectorAll('.chrome-bat-unit');

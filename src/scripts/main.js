@@ -2,6 +2,7 @@
 // MAIN ENTRY POINT
 // ==========================================================================
 import { 
+  initHeroVideos,
   initConsoleControls,
   initCartridgeDock,
   initCartridgeCards
@@ -9,10 +10,11 @@ import {
 import { initEventStream } from './sandbox.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  initHeroVideos();
   initConsoleControls();
   initCartridgeDock();
   initCartridgeCards();
   initEventStream();
 
-  console.log("⚡ Industrial Hardware Blueprint & Synthesizer Deck Initialized");
+  console.log("⚡ Industrial Hardware Blueprint & Dual 1080p Videos Initialized");
 });

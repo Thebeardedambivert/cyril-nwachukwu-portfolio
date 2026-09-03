@@ -1,0 +1,147 @@
+/* ==========================================================================
+   UNIFIED HERO BLUEPRINT STAGE (Matching User Reference Image 1 & 2)
+   Unified drafting canvas with centered Cartridge Dock video and
+   overlapping bottom-right Synthesizer Console video
+   ========================================================================== */
+
+.hero-unified-canvas {
+  position: relative;
+  background: var(--canvas-bg);
+  border: 1.5px solid var(--canvas-grid-bold);
+  border-radius: 8px;
+  min-height: 720px;
+  margin-top: 1.5rem;
+  padding: 2.5rem 2rem 6rem;
+  overflow: visible;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+}
+
+/* Left Blueprint Metadata Callouts */
+.unified-left-meta {
+  position: absolute;
+  left: 2rem;
+  top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.unified-meta-hex {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--machined-black);
+}
+
+.unified-meta-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.3rem 0;
+}
+
+.unified-orange-bar {
+  width: 6px;
+  height: 120px;
+  background-color: var(--safety-orange);
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(255, 85, 0, 0.35);
+}
+
+.unified-meta-num {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--machined-black);
+  line-height: 1;
+}
+
+.unified-meta-sub {
+  font-size: 0.72rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Dimension Drafting Overlay Lines */
+.drafting-dimension {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #6b7280;
+  pointer-events: none;
+}
+
+.drafting-dim-horiz {
+  border-top: 1px dashed #b8bcc8;
+  text-align: center;
+}
+
+.drafting-dim-vert {
+  border-left: 1px dashed #b8bcc8;
+  padding-left: 4px;
+}
+
+/* Center Stage: Cartridge Dock 1080p Video */
+.dock-video-stage {
+  position: relative;
+  max-width: 840px;
+  margin: 1.5rem auto 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.14);
+  border: 1.5px solid rgba(18, 19, 20, 0.6);
+  background: #eae9e3;
+  z-index: 5;
+}
+
+.dock-video-stage video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Bottom Right Foreground: Synthesizer Console 1080p Video (Image 1 & 2) */
+.synth-console-video-floating {
+  position: absolute;
+  bottom: -40px;
+  right: 2.5rem;
+  width: 520px;
+  max-width: 90%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--machined-black);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.28),
+    0 2px 8px rgba(0, 0, 0, 0.15);
+  background: #ebebe6;
+  z-index: 20;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.synth-console-video-floating:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 48px rgba(0, 0, 0, 0.35);
+}
+
+.synth-console-video-floating video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Responsive adjustment for floating console */
+@media (max-width: 960px) {
+  .hero-unified-canvas {
+    padding-bottom: 2rem;
+  }
+  .synth-console-video-floating {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    margin-top: 2rem;
+  }
+}

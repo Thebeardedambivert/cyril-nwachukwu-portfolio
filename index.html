@@ -12,12 +12,13 @@
   <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="/src/styles/tokens.css" />
   <link rel="stylesheet" href="/src/styles/hardware.css" />
+  <link rel="stylesheet" href="/src/styles/hero-videos.css" />
   <link rel="stylesheet" href="/src/styles/newspaper.css" />
 </head>
 <body>
 
   <!-- ========================================================================
-       1. TOP BLUEPRINT HEADER (Matching Video 2240)
+       1. TOP BLUEPRINT HEADER (Matching User Reference Image 1 & 2)
        ======================================================================== -->
   <header class="blueprint-header">
     <div class="container blueprint-header-inner">
@@ -34,7 +35,7 @@
   </header>
 
   <!-- ========================================================================
-       2. HERO BLUEPRINT & 3D CARTRIDGE DOCK (Videos 2240, 2242, 2244)
+       2. UNIFIED HERO BLUEPRINT & HARDWARE STAGE (Image 1 & 2)
        ======================================================================== -->
   <section id="hero" class="hero-blueprint-stage">
     <div class="container">
@@ -50,169 +51,58 @@
         </a>
       </div>
 
-      <!-- Main Blueprint Canvas with Schematics & Dock -->
-      <div class="blueprint-schematic-canvas">
+      <!-- Unified Blueprint Canvas -->
+      <div class="hero-unified-canvas">
         
-        <!-- Left Side Telemetry Metadata -->
-        <div class="blueprint-left-meta">
-          <span class="meta-hex">#FF5500</span>
-          <div class="meta-bar-wrap">
-            <div class="safety-orange-bar"></div>
+        <!-- Left Blueprint Metadata Callouts -->
+        <div class="unified-left-meta">
+          <span class="unified-meta-hex">#FF5500</span>
+          <div class="unified-meta-bar-wrap">
+            <div class="unified-orange-bar"></div>
             <div>
-              <span class="meta-num">02</span>
-              <p class="meta-sub">Telemetry</p>
+              <span class="unified-meta-num">02</span>
+              <p class="unified-meta-sub">Telemetry</p>
             </div>
           </div>
-          <span class="meta-sub">5-8C15</span>
-          <span class="meta-sub" style="margin-top: 1rem;">Industrial telemetry</span>
-          <span class="meta-num" style="font-size: 1.3rem;">03</span>
+          <span class="unified-meta-sub">5-8C15</span>
+          <span class="unified-meta-sub" style="margin-top: 1.2rem;">Industrial telemetry</span>
+          <span class="unified-meta-num" style="font-size: 1.4rem;">03</span>
         </div>
 
-        <!-- Drafting Dimension Lines & Compass Markers -->
-        <span class="compass-marker" style="top: 15px; left: 24%;">W</span>
-        <span class="compass-marker" style="top: 15px; left: 50%;">N</span>
-        <span class="compass-marker" style="top: 15px; right: 24%;">E</span>
+        <!-- Drafting Dimensions & Compass Markers -->
+        <span class="compass-marker" style="top: 18px; left: 24%;">W</span>
+        <span class="compass-marker" style="top: 18px; left: 50%;">N</span>
+        <span class="compass-marker" style="top: 18px; right: 24%;">E</span>
 
-        <div class="dimension-line dimension-horiz" style="top: 35px; left: 24%; width: 100px;">
+        <div class="drafting-dimension drafting-dim-horiz" style="top: 38px; left: 24%; width: 110px;">
           Geist Mono telemetry
         </div>
-        <div class="dimension-line dimension-horiz" style="top: 35px; left: 35%; right: 24%;">
+        <div class="drafting-dimension drafting-dim-horiz" style="top: 38px; left: 38%; width: 140px;">
           230 mm
         </div>
-        <div class="dimension-line dimension-vert" style="top: 40px; left: 23%; height: 180px;">
+        <div class="drafting-dimension drafting-dim-horiz" style="top: 38px; right: 24%; width: 160px;">
+          300 mm
+        </div>
+
+        <div class="drafting-dimension drafting-dim-vert" style="top: 45px; left: 23%; height: 180px;">
           120 mm
         </div>
-        <div class="dimension-line dimension-vert" style="top: 40px; right: 23%; height: 180px;">
+        <div class="drafting-dimension drafting-dim-vert" style="top: 45px; right: 22%; height: 180px;">
           120 mm
         </div>
 
-        <span class="crosshair" style="top: 50%; left: 50%;">+</span>
-        <span class="crosshair" style="top: 30%; right: 28%;">+</span>
-        <span class="crosshair" style="bottom: 35%; left: 35%;">+</span>
+        <span class="crosshair" style="top: 45%; left: 48%;">+</span>
+        <span class="crosshair" style="top: 25%; right: 28%;">+</span>
+        <span class="crosshair" style="bottom: 35%; left: 32%;">+</span>
 
-        <!-- 3D Modular Cartridge Dock (Videos 2242 & 2244) -->
-        <div class="cartridge-bay-stage">
-          <div class="cartridge-dock-tray">
-            
-            <!-- Primary agentpipe Cartridge -->
-            <div class="cartridge-primary-unit" data-video-id="" data-project-title="AGENTPIPE: CRASH-SAFE AGENTIC CODING PIPELINE">
-              <div class="cartridge-tooltip-badge">Benchmark 7.08ms</div>
-              <div class="cartridge-label-wrap">
-                <span class="cartridge-brand">agentpipe</span>
-                <span class="cartridge-chevrons">❯❯❯</span>
-              </div>
-
-              <!-- Illuminated Amber Vent Slot -->
-              <div class="cartridge-led-vent">
-                <div class="vent-amber-glow"></div>
-              </div>
-
-              <div class="cartridge-sub-meta">
-                <span class="mono">CRASH-SAFE RESUME</span>
-                <span class="oled-badge">01.23st 113.7h</span>
-              </div>
-            </div>
-
-            <!-- Supporting Slotted Cartridges (Videos) -->
-            <div class="cartridge-slot-mini" data-video-id="2ZDdxvk-o7k" data-project-title="SHOPIFY AI OPS: 5 MCP SERVERS" title="Shopify AI Ops Agent">
-              <div class="slot-icon">5·M</div>
-              <span class="mono" style="font-size:0.55rem; color:#adb5bd; text-align:center;">Shopify</span>
-              <div class="slot-pcb-pins"></div>
-            </div>
-
-            <div class="cartridge-slot-mini" data-video-id="VY9gCLDkxHo" data-project-title="APEXOPS: POSTGRES OUTBOX PIPELINE" title="ApexOps Orchestrator">
-              <div class="slot-icon">APX</div>
-              <span class="mono" style="font-size:0.55rem; color:#adb5bd; text-align:center;">ApexOps</span>
-              <div class="slot-pcb-pins"></div>
-            </div>
-
-            <div class="cartridge-slot-mini" data-video-id="LvHKXoeD-78" data-project-title="COACHOS: ENTERPRISE OPERATIONS ENGINE" title="CoachOS">
-              <div class="slot-icon">COS</div>
-              <span class="mono" style="font-size:0.55rem; color:#adb5bd; text-align:center;">CoachOS</span>
-              <div class="slot-pcb-pins"></div>
-            </div>
-
-            <div class="cartridge-slot-mini" data-video-id="zzxUVu9CMG8" data-project-title="PROPVID: MULTIMODAL VIDEO GENERATION" title="PropVid Real Estate">
-              <div class="slot-icon">PRP</div>
-              <span class="mono" style="font-size:0.55rem; color:#adb5bd; text-align:center;">PropVid</span>
-              <div class="slot-pcb-pins"></div>
-            </div>
-
-          </div>
+        <!-- Center Stage: Cartridge Dock 1080p Video (hero-cartridge-dock.mp4) -->
+        <div class="dock-video-stage">
+          <video autoplay loop muted playsinline src="/videos/hero-cartridge-dock.mp4"></video>
         </div>
 
-        <!-- Physical Synthesizer Control Deck (Video 2244 Close-Up) -->
-        <div class="physical-synth-console">
-          <div class="console-screws">
-            <div class="screw"></div>
-            <div class="screw"></div>
-            <div class="screw"></div>
-            <div class="screw"></div>
-          </div>
-
-          <div class="console-top-row">
-            <span class="console-model-label">Geist Mono TE-FF5500</span>
-            <span class="mono" style="font-size: 0.65rem; color:#ff5500; font-weight:700;">LIVE HARDWARE DECK</span>
-          </div>
-
-          <div class="console-controls-grid">
-            
-            <!-- Buttons and Chrome Bat Toggles -->
-            <div class="console-buttons-toggles">
-              <div class="btn-pair">
-                <button class="push-btn-black" title="System Cycle"></button>
-                <div class="orange-dome-indicator" title="Pulse Amber Indicator"></div>
-              </div>
-              <div class="toggle-pair">
-                <div class="chrome-bat-unit active" title="Toggle Power">
-                  <div class="hex-nut-base">
-                    <div class="bat-lever"></div>
-                  </div>
-                  <span class="toggle-tag">⏻</span>
-                </div>
-                <div class="chrome-bat-unit active" title="Toggle LED Stream">
-                  <div class="hex-nut-base">
-                    <div class="bat-lever"></div>
-                  </div>
-                  <span class="toggle-tag">LED</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Dual Slotted Faders with Tick Marks -->
-            <div class="console-faders-track">
-              <div class="groove-slider-row" data-gauge-target="needle-throughput">
-                <div class="slider-groove">
-                  <div class="knurled-fader-knob" style="left: 70%;"></div>
-                </div>
-                <div class="calibrated-ticks">
-                  <span></span><span></span><span></span><span></span><span></span>
-                  <span></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
-              </div>
-
-              <div class="groove-slider-row" data-gauge-target="needle-latency">
-                <div class="slider-groove">
-                  <div class="knurled-fader-knob" style="left: 40%;"></div>
-                </div>
-                <div class="calibrated-ticks">
-                  <span></span><span></span><span></span><span></span><span></span>
-                  <span></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Large Rotary Dial Knob -->
-            <div class="console-rotary-dial">
-              <div class="rotary-knob-casing" title="Rotate Calibration Dial">
-                <div class="rotary-cap-center">
-                  <div class="rotary-indicator-line"></div>
-                </div>
-              </div>
-              <span class="rotary-label">LED FO...</span>
-            </div>
-
-          </div>
+        <!-- Bottom-Right Foreground: Synthesizer Console 1080p Video (hero-synth-console.mp4) -->
+        <div class="synth-console-video-floating" title="Geist Mono TE-FF5500 Synthesizer Console">
+          <video autoplay loop muted playsinline src="/videos/hero-synth-console.mp4"></video>
         </div>
 
       </div>
@@ -474,7 +364,7 @@
           <div class="hero-spec-tag">ANALOG TELEMETRY DECK</div>
           <h2 class="section-title" style="font-size: 2rem; margin-bottom: 0.8rem;">Live Calibrated Needles</h2>
           <p style="color: #4b4e56; font-size: 0.95rem; line-height: 1.6;">
-            These dials are live-wired to your control sliders in the hero console. Dragging the faders updates the mechanical angle in real time, demonstrating continuous telemetry without re-rendering lags.
+            Continuous telemetry with mechanical needle dials responding to live events and simulation states without re-rendering lags.
           </p>
         </div>
 
