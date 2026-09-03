@@ -784,21 +784,23 @@
        ======================================================================== -->
   <div id="oscilloscope-modal" class="hardware-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-project-title">
     <div class="oscilloscope-chassis">
-      <div class="corner-screws">
-        <div class="screw"></div>
-        <div class="screw"></div>
-        <div class="screw"></div>
-        <div class="screw"></div>
+      <div class="chassis-screws" aria-hidden="true">
+        <div class="screw screw-tl"></div>
+        <div class="screw screw-tr"></div>
+        <div class="screw screw-bl"></div>
+        <div class="screw screw-br"></div>
       </div>
 
       <div class="chassis-top">
-        <div class="chassis-title">
-          <span class="status-beacon" style="background:#ff5500; box-shadow:0 0 8px #ff5500;"></span>
-          <span id="modal-project-title">HARDWARE VIDEO REPLAY MONITOR</span>
+        <div class="chassis-header-left">
+          <span class="badge-4k">4K UHD</span>
+          <span id="modal-project-title" class="modal-hardware-title">HARDWARE VIDEO REPLAY MONITOR</span>
         </div>
-        <button id="close-modal-btn" class="close-hardware-btn" aria-label="Close Monitor">
-          [ ESC / CLOSE ]
-        </button>
+        <div class="chassis-header-right">
+          <button id="close-modal-btn" class="close-hardware-btn" aria-label="Close Monitor">
+            [ ESC / CLOSE ]
+          </button>
+        </div>
       </div>
 
       <div class="crt-screen-bezel">
@@ -806,8 +808,11 @@
       </div>
 
       <div class="chassis-controls">
-        <span>CRT REFRESH: 60Hz // DIRECT YOUTUBE LINK STREAM</span>
-        <span>CALIBRATION: PASSED // SPEC 2026-AI</span>
+        <div class="chassis-ctrl-right mono">
+          <a id="modal-youtube-link" href="#" target="_blank" rel="noopener noreferrer" class="youtube-direct-pill" title="Open directly in YouTube">
+            <span>WATCH ON YOUTUBE ↗</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>

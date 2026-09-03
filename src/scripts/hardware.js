@@ -30,37 +30,37 @@ class MechanicalAudio {
       const now = this.ctx.currentTime;
 
       if (type === 'rocker' || type === 'toggle') {
-        // Metallic snap
+        // Metallic snap - loud, punchy, authoritative
         osc.type = 'triangle';
-        osc.frequency.setValueAtTime(540, now);
-        osc.frequency.exponentialRampToValueAtTime(70, now + 0.04);
-        gain.gain.setValueAtTime(0.25, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+        osc.frequency.setValueAtTime(680, now);
+        osc.frequency.exponentialRampToValueAtTime(70, now + 0.055);
+        gain.gain.setValueAtTime(0.95, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.055);
         osc.connect(gain);
         gain.connect(this.ctx.destination);
         osc.start(now);
-        osc.stop(now + 0.04);
+        osc.stop(now + 0.055);
       } else if (type === 'slider' || type === 'rotary') {
-        // Subtle tactile friction tick
+        // Tactile friction tick - clear and crisp
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(360, now);
-        gain.gain.setValueAtTime(0.06, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
+        osc.frequency.setValueAtTime(460, now);
+        gain.gain.setValueAtTime(0.55, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
         osc.connect(gain);
         gain.connect(this.ctx.destination);
         osc.start(now);
-        osc.stop(now + 0.02);
+        osc.stop(now + 0.035);
       } else if (type === 'button') {
-        // Dampened pushbutton thud
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(220, now);
-        osc.frequency.exponentialRampToValueAtTime(50, now + 0.05);
-        gain.gain.setValueAtTime(0.2, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+        // Resonant pushbutton thud - deep, tactile, loud
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(320, now);
+        osc.frequency.exponentialRampToValueAtTime(55, now + 0.07);
+        gain.gain.setValueAtTime(0.9, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
         osc.connect(gain);
         gain.connect(this.ctx.destination);
         osc.start(now);
-        osc.stop(now + 0.05);
+        osc.stop(now + 0.07);
       }
     } catch (e) {
       // Audio context policy
@@ -196,13 +196,65 @@ export function initConsoleControls() {
   });
 }
 
+// Helper: Open Oscilloscope Video Monitor with Maximized Audio Volume
+export function openVideoModal(videoId, title) {
+  const modal = document.getElementById('oscilloscope-modal');
+  const videoFrame = document.getElementById('crt-video-frame');
+  const titleEl = document.getElementById('modal-project-title');
+  const youtubeLink = document.getElementById('modal-youtube-link');
+
+  if (!modal || !videoFrame || !videoId) return;
+
+  soundFx.playClick('rocker');
+
+  if (titleEl) {
+    titleEl.textContent = title || 'PROJECT RECOVERY TRACE';
+  }
+
+  if (youtubeLink) {
+    youtubeLink.href = `https://youtu.be/${videoId}`;
+  }
+
+  // Load with YouTube JS API enabled and explicitly bound origin for postMessage volume control
+  const origin = encodeURIComponent(window.location.origin || '*');
+  videoFrame.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&enablejsapi=1&origin=${origin}&playsinline=1`;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // Actively send volume boost commands (unmute + 100% volume) via YouTube postMessage API
+  const sendVolumeBoost = () => {
+    try {
+      if (videoFrame && videoFrame.contentWindow) {
+        videoFrame.contentWindow.postMessage(JSON.stringify({
+          event: 'command',
+          func: 'unMute',
+          args: []
+        }), '*');
+        videoFrame.contentWindow.postMessage(JSON.stringify({
+          event: 'command',
+          func: 'setVolume',
+          args: [100]
+        }), '*');
+      }
+    } catch (err) {}
+  };
+
+  videoFrame.onload = () => {
+    sendVolumeBoost();
+    setTimeout(sendVolumeBoost, 200);
+    setTimeout(sendVolumeBoost, 600);
+  };
+
+  setTimeout(sendVolumeBoost, 300);
+  setTimeout(sendVolumeBoost, 700);
+  setTimeout(sendVolumeBoost, 1400);
+  setTimeout(sendVolumeBoost, 2200);
+}
+
 // 2. 3D Modular Cartridge Dock Interaction (Videos 2242 & 2244)
 export function initCartridgeDock() {
   const primaryCartridge = document.querySelector('.cartridge-primary-unit');
   const miniCartridges = document.querySelectorAll('.cartridge-slot-mini');
-  const modal = document.getElementById('oscilloscope-modal');
-  const videoFrame = document.getElementById('crt-video-frame');
-  const titleEl = document.getElementById('modal-project-title');
 
   if (primaryCartridge) {
     primaryCartridge.addEventListener('click', () => {
@@ -215,26 +267,18 @@ export function initCartridgeDock() {
 
       // Open Video Modal if videoId exists or show agentpipe repo
       const videoId = primaryCartridge.dataset.videoId;
-      if (videoId && modal && videoFrame) {
-        titleEl.textContent = 'AGENTPIPE: CRASH-SAFE CODING PIPELINE';
-        videoFrame.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
+      if (videoId) {
+        openVideoModal(videoId, 'AGENTPIPE: CRASH-SAFE CODING PIPELINE');
       }
     });
   }
 
   miniCartridges.forEach((mini) => {
     mini.addEventListener('click', () => {
-      soundFx.playClick('rocker');
       const videoId = mini.dataset.videoId;
       const title = mini.dataset.projectTitle;
-
-      if (videoId && modal && videoFrame) {
-        titleEl.textContent = title || 'PROJECT RECOVERY TRACE';
-        videoFrame.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
+      if (videoId) {
+        openVideoModal(videoId, title);
       }
     });
   });
@@ -245,7 +289,6 @@ export function initCartridgeCards() {
   const cards = document.querySelectorAll('.cartridge-card');
   const modal = document.getElementById('oscilloscope-modal');
   const videoFrame = document.getElementById('crt-video-frame');
-  const titleEl = document.getElementById('modal-project-title');
   const closeBtn = document.getElementById('close-modal-btn');
 
   cards.forEach((card) => {
@@ -267,13 +310,8 @@ export function initCartridgeCards() {
     card.addEventListener('click', () => {
       const videoId = card.dataset.videoId;
       const title = card.dataset.projectTitle;
-
-      if (videoId && modal && videoFrame) {
-        soundFx.playClick('rocker');
-        titleEl.textContent = title || 'PROJECT RECOVERY TRACE';
-        videoFrame.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
+      if (videoId) {
+        openVideoModal(videoId, title);
       }
     });
   });
@@ -286,6 +324,29 @@ export function initCartridgeCards() {
       document.body.style.overflow = '';
     }
   };
+
+  // Auto respond to YouTube iframe ready messages to ensure immediate unmuting and max volume
+  window.addEventListener('message', (event) => {
+    try {
+      if (typeof event.data === 'string') {
+        const data = JSON.parse(event.data);
+        if (data.event === 'onReady' || data.infoDelivery) {
+          if (videoFrame && videoFrame.contentWindow) {
+            videoFrame.contentWindow.postMessage(JSON.stringify({
+              event: 'command',
+              func: 'unMute',
+              args: []
+            }), '*');
+            videoFrame.contentWindow.postMessage(JSON.stringify({
+              event: 'command',
+              func: 'setVolume',
+              args: [100]
+            }), '*');
+          }
+        }
+      }
+    } catch (e) {}
+  });
 
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
   if (modal) {
