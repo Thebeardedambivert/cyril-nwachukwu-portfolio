@@ -238,39 +238,7 @@
   color: var(--machined-black);
 }
 
-/* ==========================================================================
-   BOTTOM MINIMALIST MONOSPACE PAGES (Matching Image 3 Typography)
-   ========================================================================== */
-.newspaper-bottom-pagination {
-  margin-top: 3.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px dashed #cfd0c6;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  font-family: var(--font-mono);
-}
 
-.pagination-legend {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--newsprint-faded);
-  text-transform: uppercase;
-}
-
-.newspaper-page-numbers {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.newspaper-bottom-pagination .page-text-num {
-  font-size: 1.15rem;
-  padding: 0.2rem 0.5rem;
-}
 
 .broadsheet-footer {
   margin-top: 2.5rem;
