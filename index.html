@@ -492,27 +492,12 @@
         <div class="broadsheet-dateline-bar">
           <span>CYRIL NWACHUKWU // ESSAYS &amp; ARCHITECTURAL POST-MORTEMS</span>
           <span>JUNE 13, 2026</span>
-          <span>EDITION <span id="newspaper-current-page-num" style="color:var(--safety-orange); font-weight:800;">01</span> OF 03</span>
-        </div>
-
-        <!-- Interactive Edition Navigation Bar -->
-        <div class="newspaper-edition-bar">
-          <button class="newspaper-page-nav-btn prev" id="btn-newspaper-prev" aria-label="Previous Page">◄ PREV EDITION</button>
-          <div class="newspaper-page-tabs" role="tablist" aria-label="Newspaper Editions">
-            <button class="newspaper-page-tab active" data-page="1" role="tab" aria-selected="true">
-              <span class="tab-edition">PAGE 01</span>
-              <span>Core Invariants &amp; Boundaries</span>
-            </button>
-            <button class="newspaper-page-tab" data-page="2" role="tab" aria-selected="false">
-              <span class="tab-edition">PAGE 02</span>
-              <span>Confidence, Slicing &amp; Caching</span>
-            </button>
-            <button class="newspaper-page-tab" data-page="3" role="tab" aria-selected="false">
-              <span class="tab-edition">PAGE 03</span>
-              <span>Test Rigor &amp; Scoring Systems</span>
-            </button>
+          <div class="broadsheet-page-switcher mono">
+            <span style="color:var(--newsprint-faded); margin-right: 0.2rem;">PAGE:</span>
+            <button class="page-text-num active" data-page="1">1</button>
+            <button class="page-text-num" data-page="2">2</button>
+            <button class="page-text-num" data-page="3">3</button>
           </div>
-          <button class="newspaper-page-nav-btn next" id="btn-newspaper-next" aria-label="Next Page">NEXT EDITION ►</button>
         </div>
       </header>
 
@@ -758,15 +743,15 @@
 
       </div>
 
-      <!-- Bottom Pagination Bar -->
+      <!-- Bottom Minimalist Monospace Pages -->
       <div class="newspaper-bottom-pagination">
-        <span class="pagination-legend mono">EDITION NAVIGATION // 9 MONOGRAPHS LOADED</span>
-        <div class="pagination-buttons">
-          <button class="page-num-btn prev-btn" id="bottom-btn-prev">◄ PREV</button>
-          <button class="page-num-btn active" data-page="1">1</button>
-          <button class="page-num-btn" data-page="2">2</button>
-          <button class="page-num-btn" data-page="3">3</button>
-          <button class="page-num-btn next-btn" id="bottom-btn-next">NEXT ►</button>
+        <span class="pagination-legend mono">EDITION PAGES</span>
+        <div class="newspaper-page-numbers mono">
+          <button class="page-text-num active" data-page="1">1</button>
+          <span style="color:#bbb; user-select:none;">·</span>
+          <button class="page-text-num" data-page="2">2</button>
+          <span style="color:#bbb; user-select:none;">·</span>
+          <button class="page-text-num" data-page="3">3</button>
         </div>
       </div>
 
