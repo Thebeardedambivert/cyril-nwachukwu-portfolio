@@ -1,0 +1,10 @@
+# Node dependencies
+node_modules/
+dist/
+
+# Logs & temp
+*.log
+.DS_Store
+
+# Large media / archives (optional to ignore from git to keep repo lightweight)
+*.zip

@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyril Nwachukwu | Applied AI & Agentic Systems Architect</title>
+  <meta name="description" content="Applied AI Engineer specializing in LangGraph state machines, crash-safe resume, deterministic eval gates, and OpenTelemetry observability. Creator of agentpipe." />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff5500'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E" />
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/src/styles/tokens.css" />
+  <link rel="stylesheet" href="/src/styles/hardware.css" />
+  <link rel="stylesheet" href="/src/styles/newspaper.css" />
+</head>
+<body>
+
+  <!-- ========================================================================
+       1. TOP HARDWARE CALIBRATION BAR
+       ======================================================================== -->
+  <header class="hardware-nav">
+    <div class="container hardware-nav-inner">
+      <div class="brand-identifier">
+        <span class="status-beacon" title="System Status: Normal"></span>
+        <span>CYRIL NWACHUKWU // SPEC_ID: 2026-AI</span>
+      </div>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#hero" class="nav-pill">01 // CONTROL</a>
+        <a href="#systems" class="nav-pill">02 // SYSTEMS</a>
+        <a href="#telemetry" class="nav-pill">03 // GAUGES</a>
+        <a href="#sandbox" class="nav-pill">04 // SANDBOX</a>
+        <a href="#newspaper" class="nav-pill">05 // TELEMETRY NEWS</a>
+        <a href="https://cal.com/nwachukwu-cyril-st5fot" target="_blank" rel="noopener noreferrer" class="nav-pill primary">BOOK SCOPING ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. HERO SECTION & HARDWARE CONTROL DECK (Panel 1 & 2)
+       ======================================================================== -->
+  <section id="hero" class="hero-section">
+    <div class="container hero-grid">
+      
+      <!-- Left: Colossal Typography & Statement -->
+      <div class="hero-content">
+        <div class="hero-spec-tag">
+          <span class="screw" style="width:8px;height:8px;"></span>
+          SYSTEM SPECIFICATION // PRODUCTION INVARIANTS
+        </div>
+        <h1 class="hero-title">
+          I build<br />
+          AI systems<br />
+          that hold up<br />
+          in production.
+        </h1>
+        <p class="hero-bio">
+          Applied AI & Distributed Systems Engineer specializing in agentic pipelines, crash-safe state machines, and evaluation gates. Creator of <strong>agentpipe</strong>. I spend my time on the parts nobody demos: evaluation, observability, cost, and failure recovery.
+        </p>
+        <div class="hero-actions">
+          <a href="#systems" class="hardware-btn orange">
+            <span>EXPLORE SYSTEMS ↓</span>
+          </a>
+          <a href="https://cal.com/nwachukwu-cyril-st5fot" target="_blank" rel="noopener noreferrer" class="hardware-btn secondary">
+            <span>BOOK SCOPING CALL ↗</span>
+          </a>
+          <a href="https://github.com/Thebeardedambivert" target="_blank" rel="noopener noreferrer" class="hardware-btn secondary">
+            <span>GITHUB ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Tactile Hardware Control Deck (Image 2) -->
+      <div class="control-deck-frame">
+        <div class="corner-screws">
+          <div class="screw"></div>
+          <div class="screw"></div>
+          <div class="screw"></div>
+          <div class="screw"></div>
+        </div>
+
+        <div class="deck-header">
+          <span class="deck-title">HARDWARE CONTROL DECK // CALIBRATION 01</span>
+          <span class="mono" style="font-size:0.7rem; color:#6b7280;">REV. 2.4</span>
+        </div>
+
+        <!-- 3 Illuminated Rocker Switches -->
+        <div class="switch-cluster">
+          <div class="rocker-unit">
+            <span class="rocker-label">CRASH_RESUME</span>
+            <div class="rocker-switch active" data-system="resume" title="Toggle Crash-Safe State Machine">
+              <div class="rocker-paddle">
+                <span>ON</span>
+                <div class="rocker-lens"></div>
+                <span>OFF</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="rocker-unit">
+            <span class="rocker-label">EVAL_GATE</span>
+            <div class="rocker-switch active" data-system="evals" title="Toggle Evaluation Gate">
+              <div class="rocker-paddle">
+                <span>ON</span>
+                <div class="rocker-lens"></div>
+                <span>OFF</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="rocker-unit">
+            <span class="rocker-label">OTEL_STREAM</span>
+            <div class="rocker-switch active" data-system="otel" title="Toggle OpenTelemetry Streaming">
+              <div class="rocker-paddle">
+                <span>ON</span>
+                <div class="rocker-lens"></div>
+                <span>OFF</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Knurled Fader Sliders in recessed grooves -->
+        <div class="faders-cluster">
+          <div class="fader-row" data-gauge-target="needle-throughput">
+            <div class="fader-info">
+              <span>THROUGHPUT_SCALE</span>
+              <span class="fader-value mono">75%</span>
+            </div>
+            <div class="fader-track">
+              <div class="fader-fill" style="width: 75%;"></div>
+              <div class="fader-knob" style="left: 75%;"></div>
+            </div>
+          </div>
+
+          <div class="fader-row" data-gauge-target="needle-latency">
+            <div class="fader-info">
+              <span>LATENCY_THRESHOLD</span>
+              <span class="fader-value mono">42%</span>
+            </div>
+            <div class="fader-track">
+              <div class="fader-fill" style="width: 42%;"></div>
+              <div class="fader-knob" style="left: 42%;"></div>
+            </div>
+          </div>
+
+          <div class="fader-row" data-gauge-target="needle-memory">
+            <div class="fader-info">
+              <span>PROMPT_CACHE_RATE</span>
+              <span class="fader-value mono">92%</span>
+            </div>
+            <div class="fader-track">
+              <div class="fader-fill" style="width: 92%;"></div>
+              <div class="fader-knob" style="left: 92%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3x3 LED Status Matrix (Image 2) -->
+        <div class="led-matrix-cluster">
+          <div class="led-matrix-title">
+            <span>TELEMETRY MATRIX (9-NODE HEALTH)</span>
+            <span style="color:#22c55e;">STATUS: OPTIMAL</span>
+          </div>
+          <div class="led-grid">
+            <div class="led-node">
+              <div class="led-bulb green" data-system="resume"></div>
+              <span class="led-caption">237-CI</span>
+            </div>
+            <div class="led-node">
+              <div class="led-bulb green" data-system="evals"></div>
+              <span class="led-caption">POSTGRES</span>
+            </div>
+            <div class="led-node">
+              <div class="led-bulb green" data-system="otel"></div>
+              <span class="led-caption">5-MCP</span>
+            </div>
+            <div class="led-node">
+              <div class="led-bulb green"></div>
+              <span class="led-caption">EVAL-GATE</span>
+            </div>
+            <div class="led-node">
+              <div class="led-bulb green"></div>
+              <span class="led-caption">HMAC-AUTH</span>
+            </div>
+            <div class="led-node">
+              <div class="led-bulb green"></div>
+              <span class="led-caption">OTEL-SPAN</span>
+            </div>
+            <div class="led-node">
+              <div class="led-bulb green"></div>
+              <span class="led-caption">OUTBOX</span>
+            </div>
+            <div class="led-node">
+              <div class="led-bulb green"></div>
+              <span class="led-caption">STREAM-V2</span>
+            </div>
+            <div class="led-node">
+              <div class="led-bulb green"></div>
+              <span class="led-caption">RETRY-DAG</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       3. PROJECT CARTRIDGES (Storyboard Panel 3 & 4)
+       ======================================================================== -->
+  <section id="systems" class="projects-section">
+    <div class="container">
+      <div class="section-header-hardware">
+        <div>
+          <h2 class="section-title">Project Cartridges</h2>
+          <p class="section-subtitle">Tactile Hardware Modules // Click to engage Video Oscilloscope</p>
+        </div>
+        <span class="mono" style="font-size:0.8rem; color:var(--safety-orange); font-weight:700;">
+          [ 7 ARCHITECTURAL SYSTEMS LOADED ]
+        </span>
+      </div>
+
+      <div class="cartridges-grid">
+        
+        <!-- Cartridge 1: agentpipe (Flagship) -->
+        <article class="cartridge-card" data-project-title="AGENTPIPE: CRASH-SAFE CODING PIPELINE" data-video-id="">
+          <div class="cartridge-top">
+            <h3 class="cartridge-title">agentpipe</h3>
+            <span class="cartridge-tag">OPEN SOURCE // PYTHON</span>
+          </div>
+          <div class="cartridge-diagram-window">
+            <!-- LangGraph State Machine SVG Schematic -->
+            <svg viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="50" width="60" height="35" rx="4" fill="#ffffff" stroke="#121314" stroke-width="1.5"/>
+              <text x="40" y="72" font-family="Geist Mono" font-size="9" text-anchor="middle" fill="#121314" font-weight="700">Ticket</text>
+              <path d="M70 67H100" stroke="#121314" stroke-width="1.5" marker-end="url(#arrow)"/>
+              
+              <rect x="100" y="30" width="80" height="75" rx="4" fill="#ebebe3" stroke="#121314" stroke-width="1.5"/>
+              <text x="140" y="50" font-family="Geist Mono" font-size="8" text-anchor="middle" fill="#121314" font-weight="700">LangGraph DAG</text>
+              <rect x="110" y="60" width="60" height="18" rx="2" fill="#ffffff" stroke="#ff5500" stroke-width="1.2"/>
+              <text x="140" y="72" font-family="Geist Mono" font-size="7" text-anchor="middle" fill="#ff5500">Fixer Loop</text>
+              
+              <path d="M180 67H210" stroke="#121314" stroke-width="1.5"/>
+              
+              <rect x="210" y="50" width="80" height="35" rx="4" fill="#ffffff" stroke="#121314" stroke-width="1.5"/>
+              <text x="250" y="66" font-family="Geist Mono" font-size="8" text-anchor="middle" fill="#121314" font-weight="700">CI Tests</text>
+              <text x="250" y="77" font-family="Geist Mono" font-size="7" text-anchor="middle" fill="#22c55e">237 PASS</text>
+            </svg>
+          </div>
+          <p class="cartridge-desc">
+            Open-source agentic coding pipeline with crash-safe resume, per-role model routing, OpenTelemetry content-hash prompt caching (92% discount), and dual false-pass/false-block eval gates.
+          </p>
+          <div class="cartridge-footer">
+            <span class="mono" style="color:#6b7280;">CI: 237 TESTS OK</span>
+            <a href="https://github.com/Thebeardedambivert/agentpipe" target="_blank" rel="noopener noreferrer" class="cartridge-trigger" style="text-decoration:none;">
+              INSPECT REPO ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- Cartridge 2: apexops-orchestrator (Video VY9gCLDkxHo) -->
+        <article class="cartridge-card" data-project-title="APEXOPS: TRANSACTIONAL OUTBOX & EVENT SOURCING" data-video-id="VY9gCLDkxHo">
+          <div class="cartridge-top">
+            <h3 class="cartridge-title">apexops</h3>
+            <span class="cartridge-tag">DISTRIBUTED // OUTBOX</span>
+          </div>
+          <div class="cartridge-diagram-window">
+            <svg viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="70" r="22" fill="#ffffff" stroke="#121314" stroke-width="1.5"/>
+              <text x="40" y="73" font-family="Geist Mono" font-size="7" text-anchor="middle" fill="#121314" font-weight="700">Webhook</text>
+              <path d="M62 70H110" stroke="#121314" stroke-width="1.5"/>
+              <rect x="110" y="45" width="80" height="50" rx="4" fill="#ebebe3" stroke="#121314" stroke-width="1.5"/>
+              <text x="150" y="65" font-family="Geist Mono" font-size="8" text-anchor="middle" fill="#121314" font-weight="700">Postgres Outbox</text>
+              <text x="150" y="80" font-family="Geist Mono" font-size="7" text-anchor="middle" fill="#ff5500">Idempotent</text>
+              <path d="M190 70H235" stroke="#121314" stroke-width="1.5"/>
+              <rect x="235" y="50" width="55" height="40" rx="4" fill="#ffffff" stroke="#121314" stroke-width="1.5"/>
+              <text x="262" y="73" font-family="Geist Mono" font-size="8" text-anchor="middle" fill="#121314" font-weight="700">Billing</text>
+            </svg>
+          </div>
+          <p class="cartridge-desc">
+            Production lead orchestration pipeline with signed webhook ingress, Postgres transactional outbox queue, event sourcing, idempotent billing, and evaluated AI guardrails.
+          </p>
+          <div class="cartridge-footer">
+            <span class="mono" style="color:#6b7280;">VIDEO WALKTHROUGH</span>
+            <span class="cartridge-trigger">WATCH DEMO →</span>
+          </div>
+        </article>
+
+        <!-- Cartridge 3: shopify-ai-ops (Video 2ZDdxvk-o7k) -->
+        <article class="cartridge-card" data-project-title="SHOPIFY AI OPS: 5 MCP SERVERS & DETERMINISTIC SQL" data-video-id="2ZDdxvk-o7k">
+          <div class="cartridge-top">
+            <h3 class="cartridge-title">shopify-ai-ops</h3>
+            <span class="cartridge-tag">5 MCP // HMAC-SHA256</span>
+          </div>
+          <div class="cartridge-diagram-window">
+            <svg viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="15" y="25" width="50" height="18" rx="2" fill="#ffffff" stroke="#121314"/>
+              <text x="40" y="37" font-family="Geist Mono" font-size="6" text-anchor="middle">MCP 1</text>
+              <rect x="15" y="50" width="50" height="18" rx="2" fill="#ffffff" stroke="#121314"/>
+              <text x="40" y="62" font-family="Geist Mono" font-size="6" text-anchor="middle">MCP 2</text>
+              <rect x="15" y="75" width="50" height="18" rx="2" fill="#ffffff" stroke="#121314"/>
+              <text x="40" y="87" font-family="Geist Mono" font-size="6" text-anchor="middle">MCP 3</text>
+              <rect x="15" y="100" width="50" height="18" rx="2" fill="#ffffff" stroke="#121314"/>
+              <text x="40" y="112" font-family="Geist Mono" font-size="6" text-anchor="middle">MCP 4/5</text>
+              
+              <path d="M65 34L110 65M65 59L110 68M65 84L110 72M65 109L110 75" stroke="#121314" stroke-width="1.2"/>
+              
+              <rect x="110" y="50" width="75" height="40" rx="4" fill="#ebebe3" stroke="#121314" stroke-width="1.5"/>
+              <text x="147" y="68" font-family="Geist Mono" font-size="7" text-anchor="middle" font-weight="700">SQL Engine</text>
+              <text x="147" y="79" font-family="Geist Mono" font-size="6" text-anchor="middle" fill="#22c55e">0% Hallucination</text>
+              
+              <path d="M185 70H220" stroke="#121314" stroke-width="1.5"/>
+              <rect x="220" y="48" width="65" height="44" rx="4" fill="#ffffff" stroke="#ff5500" stroke-width="1.5"/>
+              <text x="252" y="68" font-family="Geist Mono" font-size="7" text-anchor="middle" fill="#ff5500" font-weight="700">HMAC-SHA256</text>
+              <text x="252" y="80" font-family="Geist Mono" font-size="6" text-anchor="middle">Safety Gate</text>
+            </svg>
+          </div>
+          <p class="cartridge-desc">
+            Autonomous ecommerce operations agent built with LangGraph v1, 5 Model Context Protocol servers, deterministic SQL analytics to eliminate math hallucinations, and HMAC-SHA256 safety gates.
+          </p>
+          <div class="cartridge-footer">
+            <span class="mono" style="color:#6b7280;">VIDEO WALKTHROUGH</span>
+            <span class="cartridge-trigger">WATCH DEMO →</span>
+          </div>
+        </article>
+
+        <!-- Cartridge 4: coach-os (Video LvHKXoeD-78) -->
+        <article class="cartridge-card" data-project-title="COACHOS: ENTERPRISE OPERATIONS AUTOMATION" data-video-id="LvHKXoeD-78">
+          <div class="cartridge-top">
+            <h3 class="cartridge-title">CoachOS</h3>
+            <span class="cartridge-tag">N8N // GEMINI // SUPABASE</span>
+          </div>
+          <div class="cartridge-diagram-window">
+            <svg viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="45" width="70" height="50" rx="4" fill="#ffffff" stroke="#121314" stroke-width="1.5"/>
+              <text x="55" y="68" font-family="Geist Mono" font-size="8" text-anchor="middle" font-weight="700">Enquiry</text>
+              <text x="55" y="80" font-family="Geist Mono" font-size="6" text-anchor="middle" fill="#6b7280">Multi-Channel</text>
+              <path d="M90 70H125" stroke="#121314" stroke-width="1.5"/>
+              <rect x="125" y="35" width="80" height="70" rx="4" fill="#ebebe3" stroke="#121314" stroke-width="1.5"/>
+              <text x="165" y="62" font-family="Geist Mono" font-size="8" text-anchor="middle" font-weight="700">n8n Engine</text>
+              <text x="165" y="74" font-family="Geist Mono" font-size="6" text-anchor="middle">Contracts & Sync</text>
+              <text x="165" y="86" font-family="Geist Mono" font-size="6" text-anchor="middle" fill="#ff5500">Churn Scoring</text>
+              <path d="M205 70H235" stroke="#121314" stroke-width="1.5"/>
+              <rect x="235" y="45" width="50" height="50" rx="4" fill="#ffffff" stroke="#121314" stroke-width="1.5"/>
+              <text x="260" y="72" font-family="Geist Mono" font-size="7" text-anchor="middle" fill="#22c55e" font-weight="700">0 Admin</text>
+            </svg>
+          </div>
+          <p class="cartridge-desc">
+            Complete operational foundation on n8n, Supabase, and Gemini handling enquiry capture, automated contracts, payment sync, session reporting, and churn scoring. Reduced admin from ~15h/wk to near zero.
+          </p>
+          <div class="cartridge-footer">
+            <span class="mono" style="color:#6b7280;">VIDEO WALKTHROUGH</span>
+            <span class="cartridge-trigger">WATCH DEMO →</span>
+          </div>
+        </article>
+
+        <!-- Cartridge 5: propvid (Video zzxUVu9CMG8) -->
+        <article class="cartridge-card" data-project-title="PROPVID: MULTIMODAL REAL ESTATE AI PIPELINE" data-video-id="zzxUVu9CMG8">
+          <div class="cartridge-top">
+            <h3 class="cartridge-title">PropVid</h3>
+            <span class="cartridge-tag">MULTIMODAL // CLOUD RUN</span>
+          </div>
+          <div class="cartridge-diagram-window">
+            <svg viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="15" y="50" width="55" height="40" rx="4" fill="#ffffff" stroke="#121314" stroke-width="1.5"/>
+              <text x="42" y="73" font-family="Geist Mono" font-size="7" text-anchor="middle">Photos</text>
+              <path d="M70 70H95" stroke="#121314" stroke-width="1.5"/>
+              <rect x="95" y="45" width="60" height="50" rx="4" fill="#ebebe3" stroke="#121314" stroke-width="1.5"/>
+              <text x="125" y="67" font-family="Geist Mono" font-size="7" text-anchor="middle" font-weight="700">Vision Agent</text>
+              <text x="125" y="79" font-family="Geist Mono" font-size="6" text-anchor="middle">Script Draft</text>
+              <path d="M155 70H185" stroke="#121314" stroke-width="1.5"/>
+              <rect x="185" y="45" width="55" height="50" rx="4" fill="#ffffff" stroke="#121314" stroke-width="1.5"/>
+              <text x="212" y="67" font-family="Geist Mono" font-size="7" text-anchor="middle" font-weight="700">ElevenLabs</text>
+              <text x="212" y="79" font-family="Geist Mono" font-size="6" text-anchor="middle">Voiceover</text>
+              <path d="M240 70H265" stroke="#121314" stroke-width="1.5"/>
+              <circle cx="278" cy="70" r="14" fill="#ff5500"/>
+              <text x="278" y="74" font-family="Geist Mono" font-size="6" text-anchor="middle" fill="#fff">MP4</text>
+            </svg>
+          </div>
+          <p class="cartridge-desc">
+            LangGraph multi-agent pipeline for real estate listing videos. Vision agent analyzes property photos, drafting agent writes scripts, ElevenLabs generates voiceovers, and Creatomate renders on Google Cloud Run.
+          </p>
+          <div class="cartridge-footer">
+            <span class="mono" style="color:#6b7280;">VIDEO WALKTHROUGH</span>
+            <span class="cartridge-trigger">WATCH DEMO →</span>
+          </div>
+        </article>
+
+        <!-- Cartridge 6: ai-brand-agent (Video rrGXXdn1r3E) -->
+        <article class="cartridge-card" data-project-title="AI BRAND AGENT: RAG ON PINECONE & PGVECTOR" data-video-id="rrGXXdn1r3E">
+          <div class="cartridge-top">
+            <h3 class="cartridge-title">AI Brand Agent</h3>
+            <span class="cartridge-tag">RAG // PINECONE</span>
+          </div>
+          <div class="cartridge-diagram-window">
+            <svg viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="25" y="45" width="65" height="50" rx="4" fill="#ffffff" stroke="#121314" stroke-width="1.5"/>
+              <text x="57" y="68" font-family="Geist Mono" font-size="7" text-anchor="middle">Docs & Web</text>
+              <text x="57" y="80" font-family="Geist Mono" font-size="6" text-anchor="middle" fill="#6b7280">Chunking</text>
+              <path d="M90 70H125" stroke="#121314" stroke-width="1.5"/>
+              <rect x="125" y="38" width="75" height="64" rx="4" fill="#ebebe3" stroke="#121314" stroke-width="1.5"/>
+              <text x="162" y="62" font-family="Geist Mono" font-size="7" text-anchor="middle" font-weight="700">pgvector</text>
+              <text x="162" y="74" font-family="Geist Mono" font-size="6" text-anchor="middle">Cosine Index</text>
+              <text x="162" y="86" font-family="Geist Mono" font-size="6" text-anchor="middle" fill="#22c55e">Intent Router</text>
+              <path d="M200 70H235" stroke="#121314" stroke-width="1.5"/>
+              <rect x="235" y="45" width="50" height="50" rx="4" fill="#ffffff" stroke="#121314" stroke-width="1.5"/>
+              <text x="260" y="73" font-family="Geist Mono" font-size="7" text-anchor="middle" font-weight="700">Chat & Lead</text>
+            </svg>
+          </div>
+          <p class="cartridge-desc">
+            Production RAG architecture on Pinecone and pgvector with automated document ingestion, intent-based lead capture, and human-in-the-loop escalation over FastAPI.
+          </p>
+          <div class="cartridge-footer">
+            <span class="mono" style="color:#6b7280;">VIDEO WALKTHROUGH</span>
+            <span class="cartridge-trigger">WATCH DEMO →</span>
+          </div>
+        </article>
+
+        <!-- Cartridge 7: sales-intelligence (Video 6r-IWnzo9rw) -->
+        <article class="cartridge-card" data-project-title="SALES INTELLIGENCE AGENT: MULTI-SOURCE DATA PIPELINE" data-video-id="6r-IWnzo9rw">
+          <div class="cartridge-top">
+            <h3 class="cartridge-title">Sales Intelligence</h3>
+            <span class="cartridge-tag">AUTONOMOUS ENRICHMENT</span>
+          </div>
+          <div class="cartridge-diagram-window">
+            <svg viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="45" width="70" height="50" rx="4" fill="#ffffff" stroke="#121314" stroke-width="1.5"/>
+              <text x="55" y="68" font-family="Geist Mono" font-size="7" text-anchor="middle">Scraping Hub</text>
+              <text x="55" y="80" font-family="Geist Mono" font-size="6" text-anchor="middle" fill="#6b7280">Multi-Channel</text>
+              <path d="M90 70H125" stroke="#121314" stroke-width="1.5"/>
+              <rect x="125" y="38" width="80" height="64" rx="4" fill="#ebebe3" stroke="#121314" stroke-width="1.5"/>
+              <text x="165" y="62" font-family="Geist Mono" font-size="7" text-anchor="middle" font-weight="700">Enrichment Agent</text>
+              <text x="165" y="74" font-family="Geist Mono" font-size="6" text-anchor="middle">Fit Scoring</text>
+              <text x="165" y="86" font-family="Geist Mono" font-size="6" text-anchor="middle" fill="#ff5500">Qualification</text>
+              <path d="M205 70H235" stroke="#121314" stroke-width="1.5"/>
+              <rect x="235" y="45" width="50" height="50" rx="4" fill="#ffffff" stroke="#121314" stroke-width="1.5"/>
+              <text x="260" y="73" font-family="Geist Mono" font-size="7" text-anchor="middle" font-weight="700">CRM Push</text>
+            </svg>
+          </div>
+          <p class="cartridge-desc">
+            Autonomous sales intelligence engine that queries multi-source prospect platforms, runs automated company fit evaluations, and delivers verified lead reports directly to sales pipelines.
+          </p>
+          <div class="cartridge-footer">
+            <span class="mono" style="color:#6b7280;">VIDEO WALKTHROUGH</span>
+            <span class="cartridge-trigger">WATCH DEMO →</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       4. ANALOG GAUGES & TELEMETRY CLUSTER (Panel 5 & 6)
+       ======================================================================== -->
+  <section id="telemetry" class="telemetry-cluster-section">
+    <div class="container">
+      <div class="gauges-card">
+        <div>
+          <div class="hero-spec-tag">ANALOG TELEMETRY DECK</div>
+          <h2 class="section-title" style="font-size: 2rem; margin-bottom: 0.8rem;">Live Calibrated Needles</h2>
+          <p style="color: #4b4e56; font-size: 0.95rem; line-height: 1.6;">
+            These dials are live-wired to your control sliders in the hero. Dragging the faders updates the mechanical angle in real time, demonstrating continuous telemetry without re-rendering lags.
+          </p>
+        </div>
+
+        <div class="gauges-row">
+          <!-- Dial 1: Throughput -->
+          <div class="gauge-unit">
+            <div class="analog-dial">
+              <div class="dial-face"></div>
+              <div class="dial-needle" id="needle-throughput" style="transform: rotate(30deg);"></div>
+              <div class="dial-cap"></div>
+            </div>
+            <span class="gauge-name">Throughput</span>
+            <span class="gauge-readout mono" data-gauge="needle-throughput">1,800 t/s</span>
+          </div>
+
+          <!-- Dial 2: Latency -->
+          <div class="gauge-unit">
+            <div class="analog-dial">
+              <div class="dial-face"></div>
+              <div class="dial-needle" id="needle-latency" style="transform: rotate(-10deg);"></div>
+              <div class="dial-cap"></div>
+            </div>
+            <span class="gauge-name">Lat. (ms)</span>
+            <span class="gauge-readout mono" data-gauge="needle-latency">90ms</span>
+          </div>
+
+          <!-- Dial 3: Memory / Cache -->
+          <div class="gauge-unit">
+            <div class="analog-dial">
+              <div class="dial-face"></div>
+              <div class="dial-needle" id="needle-memory" style="transform: rotate(50deg);"></div>
+              <div class="dial-cap"></div>
+            </div>
+            <span class="gauge-name">Cache Hit</span>
+            <span class="gauge-readout mono" data-gauge="needle-memory">92%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       5. MANIFESTO BANNER (Panel 7)
+       ======================================================================== -->
+  <section class="manifesto-banner">
+    <div class="container">
+      <h2 class="manifesto-title">
+        A green test proves code runs, not that <span class="underline-accent">it is correct.</span>
+      </h2>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       6. INTERACTIVE CODE SANDBOX & EVENT STREAM (Panel 8)
+       ======================================================================== -->
+  <section id="sandbox" class="sandbox-section">
+    <div class="container">
+      <div class="section-header-hardware">
+        <div>
+          <h2 class="section-title">Telemetry Sandbox</h2>
+          <p class="section-subtitle">astream_events(v2) Streaming Filter // Live Event Packet Flow</p>
+        </div>
+        <span class="mono" style="font-size:0.8rem; color:#22c55e; font-weight:700;">
+          ● BUFFER LATENCY: 0ms
+        </span>
+      </div>
+
+      <div class="sandbox-container">
+        <!-- Left: Line-numbered Python Code -->
+        <div class="sandbox-pane">
+          <div class="pane-bar">
+            <span>PYTHON // astream_events_filter.py</span>
+            <span>UTF-8</span>
+          </div>
+          <pre class="code-view"><code><span class="code-line-num">01</span><span class="code-keyword">async for</span> event <span class="code-keyword">in</span> graph.<span class="code-fn">astream_events</span>(version=<span class="code-str">"v2"</span>):
+<span class="code-line-num">02</span>    kind = event[<span class="code-str">"event"</span>]
+<span class="code-line-num">03</span>    
+<span class="code-line-num">04</span>    <span class="code-comment"># 1. Lifecycle Events (Update progress bar live)</span>
+<span class="code-line-num">05</span>    <span class="code-keyword">if</span> kind <span class="code-keyword">in</span> (<span class="code-str">"on_chain_start"</span>, <span class="code-str">"on_chain_end"</span>):
+<span class="code-line-num">06</span>        node = event.get(<span class="code-str">"metadata"</span>, {}).get(<span class="code-str">"langgraph_node"</span>)
+<span class="code-line-num">07</span>        ui.<span class="code-fn">set_stepper_status</span>(node, status=kind)
+<span class="code-line-num">08</span>        
+<span class="code-line-num">09</span>    <span class="code-comment"># 2. Filter user-facing tokens; suppress background judges</span>
+<span class="code-line-num">10</span>    <span class="code-keyword">elif</span> kind == <span class="code-str">"on_chat_model_stream"</span>:
+<span class="code-line-num">11</span>        node_name = event[<span class="code-str">"metadata"</span>].get(<span class="code-str">"langgraph_node"</span>)
+<span class="code-line-num">12</span>        <span class="code-keyword">if</span> node_name <span class="code-keyword">in</span> (<span class="code-str">"draft"</span>, <span class="code-str">"worst_first_fixer"</span>):
+<span class="code-line-num">13</span>            chunk = event[<span class="code-str">"data"</span>][<span class="code-str">"chunk"</span>]
+<span class="code-line-num">14</span>            ui.<span class="code-fn">render_token_stream</span>(chunk.content)
+<span class="code-line-num">15</span>            
+<span class="code-line-num">16</span>    <span class="code-comment"># 3. Deterministic Barrier Synchronization</span>
+<span class="code-line-num">17</span>    <span class="code-keyword">elif</span> kind == <span class="code-str">"on_eval_barrier"</span>:
+<span class="code-line-num">18</span>        scores = event[<span class="code-str">"data"</span>][<span class="code-str">"scores"</span>]
+<span class="code-line-num">19</span>        <span class="code-keyword">if</span> scores.<span class="code-fn">weighted_mean</span>() >= <span class="code-str">0.75</span>:
+<span class="code-line-num">20</span>            <span class="code-keyword">return</span> <span class="code-fn">Command</span>(goto=<span class="code-str">"open_pull_request"</span>)</code></pre>
+        </div>
+
+        <!-- Right: Streaming JSON Output -->
+        <div class="sandbox-pane">
+          <div class="pane-bar">
+            <span>LIVE OINT-TELEMETRY SPAN STREAM</span>
+            <span style="color:#22c55e;">SOCKET: ACTIVE</span>
+          </div>
+          <div class="event-stream-view" id="event-stream-output">
+            <!-- Dynamically populated by sandbox.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       7. "THE DAILY TELEMETRY" (Newspaper Broadsheet - Panel 9 & Image 2)
+       ======================================================================== -->
+  <section id="newspaper" class="newspaper-wrapper">
+    <!-- SVG Deckle Torn Paper Edge Divider -->
+    <div class="torn-paper-edge" aria-hidden="true"></div>
+
+    <div class="container">
+      
+      <!-- Broadsheet Masthead -->
+      <header class="broadsheet-masthead">
+        <div class="broadsheet-meta-top">
+          <span>3-COLUMN BROADSHEET EDITORIAL</span>
+          <span>SPECIAL ENGINEERING DISPATCH</span>
+          <span>VOL. IV · NO. 42</span>
+        </div>
+        
+        <h2 class="broadsheet-title">The Daily Telemetry</h2>
+        
+        <div class="broadsheet-dateline-bar">
+          <span>CYRIL NWACHUKWU // ESSAYS &amp; ARCHITECTURAL POST-MORTEMS</span>
+          <span>JUNE 13, 2026</span>
+          <span>VERIFIED SYSTEMS MONOGRAPH</span>
+        </div>
+      </header>
+
+      <!-- 3-Column Broadsheet Articles -->
+      <div class="broadsheet-columns">
+        
+        <!-- Column 1 -->
+        <article class="broadsheet-article">
+          <span class="article-category">ARCHITECTURAL INVARIANTS</span>
+          <h3 class="article-headline">The 3 Invariants of Production AI Agents</h3>
+          <p class="article-subhead">
+            It is 2:00 AM. Your agent spent $45 in API credits rewording the same sentence six times. Here is how to survive in production.
+          </p>
+          <div class="article-body">
+            <p>
+              Most agent tutorials show you how to build a prototype in twenty lines of code. Almost none show you how to make it survive production traffic. When you build stateful, cyclical workflows in LangGraph, you need three non-negotiable architectural anchors:
+            </p>
+            <div class="article-quote-box">
+              <strong>Rule 1: Deterministic Control Flow</strong><br />
+              An LLM is a probabilistic token generator. It should never decide whether a loop terminates or which branch executes. Pure Python checks boolean policies, score thresholds, and iteration ceilings.
+            </div>
+            <p>
+              <strong>Rule 2: Channel Reducers over Shared Variables.</strong> Under Pregel execution, parallel nodes do not mutate a shared dictionary in memory. They emit delta updates during a superstep. If two parallel evaluator judges return updates to the same channel without an explicit reducer, the last node silently erases the first.
+            </p>
+            <p>
+              <strong>Rule 3: Side-Effect Isolation.</strong> External mutations—sending emails, charging cards, calling webhooks—belong in the host wrapper that invokes the graph, never inside node bodies. Otherwise, those side-effects fire repeatedly during test runs, rollbacks, and replays.
+            </p>
+          </div>
+        </article>
+
+        <!-- Column 2 -->
+        <article class="broadsheet-article">
+          <span class="article-category">COST &amp; CACHING OBSERVABILITY</span>
+          <h3 class="article-headline">Beyond The Prompt: The 70K Token Blowup</h3>
+          <p class="article-subhead">
+            The entire build of agentpipe started from a single number measured on a real pipeline: 70,000 tokens of input to produce 100 tokens of output.
+          </p>
+          <div class="article-body">
+            <p>
+              The agent worked fine. It just cost a fortune, quietly, and nobody noticed because nothing ever threw an error. Money was the only symptom. So I rebuilt it with measurement first. Four core lessons emerged:
+            </p>
+            <p>
+              <strong>1. Rebuild, don't accumulate.</strong> That 70k blowup happened because every retry re-read all previous attempts. My loop rebuilds its context from the repository as it is now, so attempt four costs about the same as attempt one.
+            </p>
+            <div class="article-quote-box">
+              <strong>"It works" needs a number.</strong><br />
+              Putting stable content first earned a caching discount: 92% of repeated prompts billed at the cached rate. But only above the provider's ~1,024-token threshold. The honest version has numbers, not claims.
+            </div>
+            <p>
+              <strong>2. The counter is a hint; the repo is the truth.</strong> I made the loop survive a crash by refusing to trust my own attempt counter and always re-checking the actual files on disk. You cannot silently skip work you never assumed was finished.
+            </p>
+          </div>
+        </article>
+
+        <!-- Column 3 -->
+        <article class="broadsheet-article">
+          <span class="article-category">EVALUATION GATES</span>
+          <h3 class="article-headline">The Judge Needs A Check Too</h3>
+          <p class="article-subhead">
+            Stop asking one giant prompt to grade everything. Why specialized single-purpose judges running in parallel beat generalists every time.
+          </p>
+          <div class="article-body">
+            <p>
+              When an LLM evaluates five competing dimensions in one pass, it suffers from attention dilution. It misses subtle hallucinations because it was busy grading tone. In our client report agent, we solved this using LangGraph's Send() API:
+            </p>
+            <p>
+              <strong>1. Dynamic Fan-Out:</strong> Spawns three specialized judges concurrently: eval_accuracy strictly checks facts against transcript; eval_clarity checks structure; eval_completeness checks requirement coverage.
+            </p>
+            <div class="article-quote-box">
+              <strong>The False-Pass Metric:</strong><br />
+              A judge scoring 98% overall with 80% agreement on critical cases is dangerous. Judge A with 96% overall but 99% critical agreement is the one you want.
+            </div>
+            <p>
+              Deterministic code downstream can only be as trustworthy as the data it is handed. An impossible number (like 1.7 on a 1.0 scale) is not a low quality score; it is a broken contract. Check the measurement before you conclude the work is bad.
+            </p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Broadsheet Footer -->
+      <footer class="broadsheet-footer">
+        <span>© 2026 CYRIL NWACHUKWU // APPLIED AI ENGINEER</span>
+        <span>PUBLISHED IN LAGOS &amp; DISTRIBUTED GLOBALLY</span>
+        <span>READ MORE ON SUBSTACK &amp; LINKEDIN</span>
+      </footer>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       8. HARDWARE FOOTER & CONTACT TERMINAL
+       ======================================================================== -->
+  <footer class="hardware-nav" style="border-top: 2px solid var(--machined-black); border-bottom: none; padding: 2.5rem 0;">
+    <div class="container hardware-nav-inner">
+      <div>
+        <div class="brand-identifier" style="margin-bottom: 0.4rem;">
+          <span class="screw" style="width:8px;height:8px;"></span>
+          <span>CYRIL NWACHUKWU · APPLIED AI ENGINEER</span>
+        </div>
+        <p class="mono" style="font-size: 0.78rem; color: #555760;">
+          Open to Remote AI Engineer, LLM Engineer &amp; Agentic AI roles.
+        </p>
+      </div>
+
+      <div class="nav-links">
+        <a href="https://cal.com/nwachukwu-cyril-st5fot" target="_blank" rel="noopener noreferrer" class="nav-pill primary">BOOK CAL.COM CALL ↗</a>
+        <a href="https://github.com/Thebeardedambivert" target="_blank" rel="noopener noreferrer" class="nav-pill">GITHUB ↗</a>
+        <a href="https://www.linkedin.com/in/cyril-nwachukwu-96b029173/" target="_blank" rel="noopener noreferrer" class="nav-pill">LINKEDIN ↗</a>
+        <a href="mailto:K1ngceework97@gmail.com" class="nav-pill">EMAIL ME ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       9. HARDWARE OSCILLOSCOPE VIDEO MONITOR MODAL
+       ======================================================================== -->
+  <div id="oscilloscope-modal" class="hardware-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-project-title">
+    <div class="oscilloscope-chassis">
+      <div class="corner-screws">
+        <div class="screw"></div>
+        <div class="screw"></div>
+        <div class="screw"></div>
+        <div class="screw"></div>
+      </div>
+
+      <div class="chassis-top">
+        <div class="chassis-title">
+          <span class="status-beacon" style="background:#ff5500; box-shadow:0 0 8px #ff5500;"></span>
+          <span id="modal-project-title">HARDWARE VIDEO REPLAY MONITOR</span>
+        </div>
+        <button id="close-modal-btn" class="close-hardware-btn" aria-label="Close Monitor">
+          [ ESC / CLOSE ]
+        </button>
+      </div>
+
+      <div class="crt-screen-bezel">
+        <iframe id="crt-video-frame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <div class="chassis-controls">
+        <span>CRT REFRESH: 60Hz // DIRECT YOUTUBE LINK STREAM</span>
+        <span>CALIBRATION: PASSED // SPEC 2026-AI</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Entry Point -->
+  <script type="module" src="/src/scripts/main.js"></script>
+</body>
+</html>

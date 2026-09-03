@@ -1,0 +1,138 @@
+/* ==========================================================================
+   TOKENS & CORE DESIGN SYSTEM: INDUSTRIAL HARDWARE & BROADSHEET
+   Inspired by Dieter Rams, Teenage Engineering & Classic Editorial Newsprint
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Canvas & Base Surfaces */
+  --canvas-bg: #f4f4ee;
+  --canvas-grid-subtle: #e5e5dc;
+  --canvas-grid-bold: #d2d2c6;
+  --surface-panel: #ebebe3;
+  --surface-raised: #ffffff;
+  --surface-recessed: #e1e1d7;
+
+  /* Industrial Hardware Contrasts */
+  --machined-black: #111214;
+  --machined-slate: #24262a;
+  --steel-border: #18191c;
+  --subtle-border: #cfd0c5;
+  --screw-metal: #8a8d94;
+
+  /* Safety & Status Palette */
+  --safety-orange: #ff5500;
+  --safety-orange-hover: #e04b00;
+  --safety-orange-tint: rgba(255, 85, 0, 0.12);
+  --amber-glow: #ff9e1b;
+  --amber-active-bg: #ff6a00;
+  
+  --led-green-glow: #22c55e;
+  --led-green-bg: #15803d;
+  --led-yellow-glow: #eab308;
+  --led-yellow-bg: #a16207;
+  --led-red-glow: #ef4444;
+  --led-red-bg: #b91c1c;
+
+  /* Newspaper Broadsheet Palette */
+  --newsprint-bg: #f7f7f2;
+  --newsprint-ink: #111111;
+  --newsprint-faded: #444444;
+  --newsprint-rule: #222222;
+
+  /* Typography Stacks */
+  --font-display: 'Space Grotesk', -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-news-title: 'Playfair Display', Georgia, serif;
+  --font-news-body: 'Newsreader', Georgia, serif;
+
+  /* Physical Shadow Elevations */
+  --shadow-switch: 0 6px 14px rgba(18, 19, 20, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --shadow-switch-active: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-cartridge: 0 12px 28px -6px rgba(17, 18, 20, 0.18), 0 2px 6px rgba(17, 18, 20, 0.08);
+  --shadow-cartridge-hover: 0 22px 42px -8px rgba(17, 18, 20, 0.28), 0 6px 16px rgba(17, 18, 20, 0.12);
+  --shadow-recessed: inset 0 2px 4px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(0, 0, 0, 0.35);
+  
+  /* Transitions */
+  --spring-snappy: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --spring-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Global Canvas Setup */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--canvas-bg);
+  color: var(--machined-black);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.5;
+  /* Blueprint Graph Paper Background */
+  background-image: 
+    linear-gradient(to right, var(--canvas-grid-bold) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--canvas-grid-bold) 1px, transparent 1px),
+    linear-gradient(to right, var(--canvas-grid-subtle) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--canvas-grid-subtle) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+  background-position: -1px -1px;
+}
+
+/* Utility Containers */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.machined-border {
+  border: 2px solid var(--machined-black);
+}
+
+.subtle-border {
+  border: 1px solid var(--subtle-border);
+}
+
+/* Screw Accents for Industrial Feel */
+.screw {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #d1d4dc 0%, #8b8e96 70%, #5a5d64 100%);
+  border: 1px solid #4a4d53;
+  position: relative;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.screw::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  width: 70%;
+  height: 1.5px;
+  background: #33363b;
+  transform: translateY(-50%) rotate(42deg);
+}
+
+/* Custom Selection */
+::selection {
+  background-color: var(--safety-orange);
+  color: #ffffff;
+}

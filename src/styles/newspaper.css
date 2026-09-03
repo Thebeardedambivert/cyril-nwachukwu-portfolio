@@ -1,0 +1,187 @@
+/* ==========================================================================
+   NEWSPAPER BROADSHEET: "THE DAILY TELEMETRY"
+   Classic Broadsheet Editorial, Deckle Torn Edge & Multi-Column Thoughts
+   ========================================================================== */
+
+.newspaper-wrapper {
+  position: relative;
+  background-color: var(--newsprint-bg);
+  padding: 5rem 0 6rem;
+  margin-top: 4rem;
+  color: var(--newsprint-ink);
+}
+
+/* SVG Torn Deckle Paper Edge Divider */
+.torn-paper-edge {
+  position: absolute;
+  top: -24px;
+  left: 0;
+  width: 100%;
+  height: 25px;
+  background-repeat: repeat-x;
+  background-size: 48px 25px;
+  /* Jagged deckled edge SVG */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 24' preserveAspectRatio='none'%3E%3Cpath d='M0,24 L0,8 L4,14 L8,5 L12,12 L16,7 L20,15 L24,4 L28,13 L32,6 L36,16 L40,8 L44,14 L48,6 L48,24 Z' fill='%23f7f7f2'/%3E%3Cpath d='M0,8 L4,14 L8,5 L12,12 L16,7 L20,15 L24,4 L28,13 L32,6 L36,16 L40,8 L44,14 L48,6' fill='none' stroke='%23d9d9ce' stroke-width='1'/%3E%3C/svg%3E");
+  filter: drop-shadow(0 -3px 3px rgba(0, 0, 0, 0.06));
+}
+
+/* Broadsheet Masthead Header */
+.broadsheet-masthead {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.broadsheet-meta-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--newsprint-faded);
+  border-top: 1.5px solid var(--newsprint-rule);
+  border-bottom: 1.5px solid var(--newsprint-rule);
+  padding: 0.4rem 0;
+  margin-bottom: 1.2rem;
+}
+
+.broadsheet-title {
+  font-family: var(--font-news-title);
+  font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-transform: capitalize;
+  margin: 0.5rem 0 1rem;
+}
+
+.broadsheet-dateline-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 3px double var(--newsprint-rule);
+  border-bottom: 1px solid var(--newsprint-rule);
+  padding: 0.5rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--newsprint-faded);
+  text-transform: uppercase;
+}
+
+/* 3-Column Newspaper Article Grid */
+.broadsheet-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  position: relative;
+}
+
+@media (max-width: 960px) {
+  .broadsheet-columns {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+}
+
+.broadsheet-article {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Vertical Column Divider Rules */
+@media (min-width: 961px) {
+  .broadsheet-article:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -1.25rem;
+    width: 1px;
+    height: 100%;
+    background: #d4d4cb;
+  }
+}
+
+.article-category {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--safety-orange);
+  margin-bottom: 0.6rem;
+}
+
+.article-headline {
+  font-family: var(--font-news-title);
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.article-subhead {
+  font-family: var(--font-news-body);
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: #3b3d42;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #e0e0d6;
+}
+
+.article-body {
+  font-family: var(--font-news-body);
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--newsprint-ink);
+  text-align: justify;
+}
+
+.article-body p {
+  margin-bottom: 1rem;
+}
+
+/* Newspaper Drop Cap */
+.article-body p:first-of-type::first-letter {
+  font-family: var(--font-news-title);
+  font-size: 3.6rem;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.6rem;
+  margin-top: 0.2rem;
+  font-weight: 900;
+  color: var(--machined-black);
+}
+
+.article-quote-box {
+  margin: 1.2rem 0;
+  padding: 0.8rem 1rem;
+  border-left: 3px solid var(--safety-orange);
+  background: rgba(255, 85, 0, 0.05);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--machined-black);
+}
+
+.broadsheet-footer {
+  margin-top: 4rem;
+  border-top: 2px solid var(--newsprint-rule);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--newsprint-faded);
+}
