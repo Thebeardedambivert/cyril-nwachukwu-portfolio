@@ -1,9 +1,8 @@
 // ==========================================================================
 // HARDWARE SKEUOMORPHIC CONTROLS & OSCILLOSCOPE MODAL LOGIC
-// Mechanical sound synthesis, interactive rockers, fader tracks, and analog dials
+// Mechanical sound synthesis, interactive rockers, console toggles, faders, and dials
 // ==========================================================================
 
-// 1. Web Audio API Mechanical Sound Synthesizer (Zero External Audio Files)
 class MechanicalAudio {
   constructor() {
     this.ctx = null;
@@ -30,133 +29,143 @@ class MechanicalAudio {
       const gain = this.ctx.createGain();
       const now = this.ctx.currentTime;
 
-      if (type === 'rocker') {
-        // Crisp physical snap
+      if (type === 'rocker' || type === 'toggle') {
+        // Metallic snap
         osc.type = 'triangle';
-        osc.frequency.setValueAtTime(480, now);
-        osc.frequency.exponentialRampToValueAtTime(80, now + 0.04);
-        gain.gain.setValueAtTime(0.2, now);
+        osc.frequency.setValueAtTime(540, now);
+        osc.frequency.exponentialRampToValueAtTime(70, now + 0.04);
+        gain.gain.setValueAtTime(0.25, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
         osc.connect(gain);
         gain.connect(this.ctx.destination);
         osc.start(now);
         osc.stop(now + 0.04);
-      } else if (type === 'slider') {
+      } else if (type === 'slider' || type === 'rotary') {
         // Subtle tactile friction tick
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(320, now);
-        gain.gain.setValueAtTime(0.05, now);
+        osc.frequency.setValueAtTime(360, now);
+        gain.gain.setValueAtTime(0.06, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
         osc.connect(gain);
         gain.connect(this.ctx.destination);
         osc.start(now);
         osc.stop(now + 0.02);
+      } else if (type === 'button') {
+        // Dampened pushbutton thud
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(220, now);
+        osc.frequency.exponentialRampToValueAtTime(50, now + 0.05);
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.05);
       }
     } catch (e) {
-      // Audio context silently fails if restricted by browser policy
+      // Audio context policy
     }
   }
 }
 
-const soundFx = new MechanicalAudio();
+export const soundFx = new MechanicalAudio();
 
-// 2. Interactive Rocker Switches
-export function initRockerSwitches() {
-  const switches = document.querySelectorAll('.rocker-switch');
-  switches.forEach((sw) => {
-    sw.addEventListener('click', () => {
-      soundFx.playClick('rocker');
-      sw.classList.toggle('active');
-      
-      const targetSystem = sw.dataset.system;
-      const isActive = sw.classList.contains('active');
-      
-      // Update matching LED diode if present
-      const led = document.querySelector(`.led-bulb[data-system="${targetSystem}"]`);
-      if (led) {
-        if (isActive) {
-          led.classList.add('green');
-          led.classList.remove('yellow', 'red');
-        } else {
-          led.classList.remove('green');
-          led.classList.add('yellow');
-        }
-      }
+// 1. Interactive Synthesizer Console (Video 2244 & Hero)
+export function initConsoleControls() {
+  // Chrome metal bat toggles
+  const batUnits = document.querySelectorAll('.chrome-bat-unit');
+  batUnits.forEach((unit) => {
+    unit.addEventListener('click', () => {
+      soundFx.playClick('toggle');
+      unit.classList.toggle('active');
     });
   });
-}
 
-// 3. Knurled Fader Sliders driving Analog Dials
-export function initFadersAndGauges() {
-  const faderRows = document.querySelectorAll('.fader-row');
+  // Black pushbutton
+  const blackBtn = document.querySelector('.push-btn-black');
+  if (blackBtn) {
+    blackBtn.addEventListener('click', () => {
+      soundFx.playClick('button');
+    });
+  }
 
-  faderRows.forEach((row) => {
-    const track = row.querySelector('.fader-track');
-    const knob = row.querySelector('.fader-knob');
-    const fill = row.querySelector('.fader-fill');
-    const readout = row.querySelector('.fader-value');
-    const gaugeId = row.dataset.gaugeTarget;
-    const needle = document.getElementById(gaugeId);
-    const gaugeValDisplay = document.querySelector(`.gauge-readout[data-gauge="${gaugeId}"]`);
+  // Orange dome indicator button
+  const orangeDome = document.querySelector('.orange-dome-indicator');
+  if (orangeDome) {
+    orangeDome.addEventListener('click', () => {
+      soundFx.playClick('button');
+      orangeDome.style.boxShadow = '0 0 25px #ff5500, inset 0 1px 2px #fff';
+      setTimeout(() => {
+        orangeDome.style.boxShadow = '';
+      }, 400);
+    });
+  }
+
+  // Console rotary dial knob
+  const rotary = document.querySelector('.rotary-knob-casing');
+  if (rotary) {
+    let currentAngle = 0;
+    rotary.addEventListener('click', () => {
+      soundFx.playClick('rotary');
+      currentAngle = (currentAngle + 30) % 360;
+      rotary.style.transform = `rotate(${currentAngle}deg)`;
+    });
+  }
+
+  // Console Slotted Fader Tracks
+  const grooveRows = document.querySelectorAll('.groove-slider-row');
+  grooveRows.forEach((row) => {
+    const groove = row.querySelector('.slider-groove');
+    const knob = row.querySelector('.knurled-fader-knob');
+    const targetGauge = row.dataset.gaugeTarget;
+    const needle = document.getElementById(targetGauge);
 
     let isDragging = false;
 
-    const updatePosition = (clientX) => {
-      const rect = track.getBoundingClientRect();
-      let offsetX = clientX - rect.left;
-      let percentage = Math.max(0, Math.min(1, offsetX / rect.width));
+    const updateSlider = (clientX) => {
+      const rect = groove.getBoundingClientRect();
+      const offsetX = clientX - rect.left;
+      const pct = Math.max(0, Math.min(1, offsetX / rect.width));
 
-      knob.style.left = `${percentage * 100}%`;
-      fill.style.width = `${percentage * 100}%`;
+      knob.style.left = `${pct * 100}%`;
+      soundFx.playClick('slider');
 
-      const displayVal = Math.round(percentage * 100);
-      if (readout) readout.textContent = `${displayVal}%`;
-
-      // Update Analog Needle Gauge (-60deg to +60deg sweep)
       if (needle) {
-        const angle = -60 + percentage * 120;
+        const angle = -60 + pct * 120;
         needle.style.transform = `rotate(${angle}deg)`;
       }
 
-      if (gaugeValDisplay) {
-        if (gaugeId === 'needle-throughput') {
-          gaugeValDisplay.textContent = `${Math.round(percentage * 2400)} t/s`;
-        } else if (gaugeId === 'needle-latency') {
-          gaugeValDisplay.textContent = `${Math.round(15 + percentage * 180)}ms`;
-        } else if (gaugeId === 'needle-memory') {
-          gaugeValDisplay.textContent = `${Math.round(percentage * 100)}%`;
+      const readout = document.querySelector(`.gauge-readout[data-gauge="${targetGauge}"]`);
+      if (readout) {
+        if (targetGauge === 'needle-throughput') {
+          readout.textContent = `${Math.round(pct * 2400)} t/s`;
+        } else if (targetGauge === 'needle-latency') {
+          readout.textContent = `${Math.round(15 + pct * 180)}ms`;
         }
       }
     };
 
-    track.addEventListener('mousedown', (e) => {
+    groove.addEventListener('mousedown', (e) => {
       isDragging = true;
-      soundFx.playClick('slider');
-      updatePosition(e.clientX);
+      updateSlider(e.clientX);
     });
 
     window.addEventListener('mousemove', (e) => {
-      if (isDragging) {
-        updatePosition(e.clientX);
-      }
+      if (isDragging) updateSlider(e.clientX);
     });
 
     window.addEventListener('mouseup', () => {
-      if (isDragging) {
-        isDragging = false;
-      }
+      if (isDragging) isDragging = false;
     });
 
     // Touch support
-    track.addEventListener('touchstart', (e) => {
+    groove.addEventListener('touchstart', (e) => {
       isDragging = true;
-      if (e.touches[0]) updatePosition(e.touches[0].clientX);
+      if (e.touches[0]) updateSlider(e.touches[0].clientX);
     }, { passive: true });
 
     window.addEventListener('touchmove', (e) => {
-      if (isDragging && e.touches[0]) {
-        updatePosition(e.touches[0].clientX);
-      }
+      if (isDragging && e.touches[0]) updateSlider(e.touches[0].clientX);
     }, { passive: true });
 
     window.addEventListener('touchend', () => {
@@ -165,9 +174,57 @@ export function initFadersAndGauges() {
   });
 }
 
-// 4. 3D Isometric Mouse Tilt for Project Cartridges
-export function initCartridgeHoverPhysics() {
+// 2. 3D Modular Cartridge Dock Interaction (Videos 2242 & 2244)
+export function initCartridgeDock() {
+  const primaryCartridge = document.querySelector('.cartridge-primary-unit');
+  const miniCartridges = document.querySelectorAll('.cartridge-slot-mini');
+  const modal = document.getElementById('oscilloscope-modal');
+  const videoFrame = document.getElementById('crt-video-frame');
+  const titleEl = document.getElementById('modal-project-title');
+
+  if (primaryCartridge) {
+    primaryCartridge.addEventListener('click', () => {
+      soundFx.playClick('rocker');
+      // Elevate in 3D
+      primaryCartridge.style.transform = 'rotateX(4deg) translateY(-28px) scale(1.04)';
+      setTimeout(() => {
+        primaryCartridge.style.transform = '';
+      }, 500);
+
+      // Open Video Modal if videoId exists or show agentpipe repo
+      const videoId = primaryCartridge.dataset.videoId;
+      if (videoId && modal && videoFrame) {
+        titleEl.textContent = 'AGENTPIPE: CRASH-SAFE CODING PIPELINE';
+        videoFrame.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  }
+
+  miniCartridges.forEach((mini) => {
+    mini.addEventListener('click', () => {
+      soundFx.playClick('rocker');
+      const videoId = mini.dataset.videoId;
+      const title = mini.dataset.projectTitle;
+
+      if (videoId && modal && videoFrame) {
+        titleEl.textContent = title || 'PROJECT RECOVERY TRACE';
+        videoFrame.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+}
+
+// 3. Lower Project Cartridge Hover & Oscilloscope Modal
+export function initCartridgeCards() {
   const cards = document.querySelectorAll('.cartridge-card');
+  const modal = document.getElementById('oscilloscope-modal');
+  const videoFrame = document.getElementById('crt-video-frame');
+  const titleEl = document.getElementById('modal-project-title');
+  const closeBtn = document.getElementById('close-modal-btn');
 
   cards.forEach((card) => {
     card.addEventListener('mousemove', (e) => {
@@ -184,18 +241,7 @@ export function initCartridgeHoverPhysics() {
     card.addEventListener('mouseleave', () => {
       card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
     });
-  });
-}
 
-// 5. Hardware Oscilloscope Video Monitor Modal
-export function initOscilloscopeModal() {
-  const modal = document.getElementById('oscilloscope-modal');
-  const videoFrame = document.getElementById('crt-video-frame');
-  const titleEl = document.getElementById('modal-project-title');
-  const closeBtn = document.getElementById('close-modal-btn');
-  const cards = document.querySelectorAll('.cartridge-card');
-
-  cards.forEach((card) => {
     card.addEventListener('click', () => {
       const videoId = card.dataset.videoId;
       const title = card.dataset.projectTitle;

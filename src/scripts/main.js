@@ -2,19 +2,17 @@
 // MAIN ENTRY POINT
 // ==========================================================================
 import { 
-  initRockerSwitches, 
-  initFadersAndGauges, 
-  initCartridgeHoverPhysics, 
-  initOscilloscopeModal 
+  initConsoleControls,
+  initCartridgeDock,
+  initCartridgeCards
 } from './hardware.js';
 import { initEventStream } from './sandbox.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  initRockerSwitches();
-  initFadersAndGauges();
-  initCartridgeHoverPhysics();
-  initOscilloscopeModal();
+  initConsoleControls();
+  initCartridgeDock();
+  initCartridgeCards();
   initEventStream();
 
-  console.log("⚡ Industrial Hardware Portfolio & The Daily Telemetry Initialized");
+  console.log("⚡ Industrial Hardware Blueprint & Synthesizer Deck Initialized");
 });

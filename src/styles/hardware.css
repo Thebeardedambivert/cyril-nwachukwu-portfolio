@@ -1,455 +1,705 @@
 /* ==========================================================================
    HARDWARE & PHYSICAL SKEUOMORPHIC STYLING
-   Tactile Rockers, Knurled Faders, LED Matrix, Analog Dials, Project Cartridges
+   Tactile Synthesizer Deck, Blueprint Schematics, 3D Cartridge Dock
    ========================================================================== */
 
-/* Top Calibration & Telemetry Navigation */
-.hardware-nav {
-  border-bottom: 2px solid var(--machined-black);
-  background-color: var(--surface-panel);
-  padding: 0.85rem 0;
+/* Top Header (Matching Video 2240) */
+.blueprint-header {
+  border-bottom: 1.5px solid var(--machined-black);
+  background-color: var(--canvas-bg);
+  padding: 0.9rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(8px);
 }
 
-.hardware-nav-inner {
+.blueprint-header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   gap: 1rem;
 }
 
-.brand-identifier {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.status-beacon {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--led-green-glow);
-  box-shadow: 0 0 10px var(--led-green-glow);
-  animation: pulse-beacon 2s infinite ease-in-out;
-}
-
-@keyframes pulse-beacon {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
-}
-
-.nav-links {
+.header-left-cluster {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
 }
 
-.nav-pill {
-  padding: 0.4rem 0.85rem;
-  background: var(--surface-raised);
-  border: 1.5px solid var(--machined-black);
-  color: var(--machined-black);
-  text-decoration: none;
-  font-weight: 600;
+.badge-4k {
+  background: var(--machined-black);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.2rem 0.45rem;
   border-radius: 4px;
-  transition: all 0.15s ease;
+  letter-spacing: 0.05em;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  box-shadow: 1px 1px 0px var(--machined-black);
+  justify-content: center;
 }
 
-.nav-pill:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 2px 2px 0px var(--machined-black);
+.header-subtext {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #4b4e56;
+  font-weight: 500;
 }
 
-.nav-pill.primary {
-  background: var(--safety-orange);
+.header-right-cluster {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.header-link {
+  color: var(--machined-black);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.header-link:hover {
+  color: var(--safety-orange);
+}
+
+.header-pill-btn {
+  background: var(--machined-black);
   color: #ffffff;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.45rem 1.1rem;
+  border-radius: 9999px;
+  transition: all 0.15s var(--spring-smooth);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-.nav-pill.primary:hover {
-  background: var(--safety-orange-hover);
+.header-pill-btn:hover {
+  background: var(--safety-orange);
+  transform: translateY(-1px);
 }
 
 /* ==========================================================================
-   HERO SECTION & PHYSICAL CONTROL DECK
+   HERO BLUEPRINT & 3D CARTRIDGE DOCK (Videos 2240, 2242, 2244)
    ========================================================================== */
-.hero-section {
-  padding: 4rem 0 3rem;
+.hero-blueprint-stage {
+  padding: 3.5rem 0 4rem;
+  position: relative;
+  overflow: visible;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 3rem;
-  align-items: start;
+/* Hero Top Typography Row */
+.hero-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.2rem;
+  padding-top: 0.5rem;
 }
 
-@media (max-width: 960px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-}
-
-.hero-spec-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--safety-orange);
-  margin-bottom: 1.2rem;
-  padding: 0.25rem 0.6rem;
-  background: var(--safety-orange-tint);
-  border: 1px dashed var(--safety-orange);
-}
-
-.hero-title {
+.hero-main-title {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 6vw, 4.8rem);
-  font-weight: 700;
-  line-height: 0.96;
+  font-size: clamp(2.4rem, 5.2vw, 4.4rem);
+  font-weight: 800;
   letter-spacing: -0.04em;
+  line-height: 1.05;
   text-transform: uppercase;
   color: var(--machined-black);
-  margin-bottom: 1.5rem;
 }
 
-.hero-bio {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #3f4249;
-  max-width: 580px;
-  margin-bottom: 2rem;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.hardware-btn {
+.hero-sublink {
   font-family: var(--font-mono);
-  font-size: 0.88rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 0.85rem 1.6rem;
-  border: 2px solid var(--machined-black);
-  border-radius: 4px;
-  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--machined-black);
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  text-decoration: none;
-  background: var(--machined-black);
-  color: #ffffff;
-  box-shadow: 3px 3px 0px var(--subtle-border);
-  transition: all 0.15s var(--spring-smooth);
+  gap: 0.4rem;
+  transition: transform 0.15s ease, color 0.15s ease;
 }
 
-.hardware-btn:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0px var(--machined-black);
+.hero-sublink:hover {
+  color: var(--safety-orange);
+  transform: translateX(4px);
 }
 
-.hardware-btn.orange {
-  background: var(--safety-orange);
-  border-color: var(--machined-black);
-  color: #ffffff;
-}
-
-.hardware-btn.orange:hover {
-  background: var(--safety-orange-hover);
-}
-
-.hardware-btn.secondary {
-  background: var(--surface-raised);
-  color: var(--machined-black);
-}
-
-/* Physical Hardware Control Deck */
-.control-deck-frame {
-  background: var(--surface-panel);
-  border: 2px solid var(--machined-black);
-  border-radius: 8px;
-  padding: 1.5rem;
+/* Main Blueprint Grid Canvas */
+.blueprint-schematic-canvas {
   position: relative;
-  box-shadow: 6px 6px 0px rgba(18, 19, 20, 0.12);
-}
-
-.deck-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1.5px solid var(--subtle-border);
-  padding-bottom: 0.8rem;
-  margin-bottom: 1.4rem;
-}
-
-.deck-title {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--machined-black);
-}
-
-.corner-screws {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
-
-.corner-screws .screw:nth-child(1) { position: absolute; top: 8px; left: 8px; }
-.corner-screws .screw:nth-child(2) { position: absolute; top: 8px; right: 8px; }
-.corner-screws .screw:nth-child(3) { position: absolute; bottom: 8px; left: 8px; }
-.corner-screws .screw:nth-child(4) { position: absolute; bottom: 8px; right: 8px; }
-
-/* Tactile Rocker Switches (Panel 1 & Image 2) */
-.switch-cluster {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-bottom: 1.8rem;
-}
-
-.rocker-unit {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.rocker-label {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--machined-slate);
-}
-
-.rocker-switch {
-  width: 54px;
-  height: 72px;
-  background: #2b2d31;
-  border-radius: 8px;
-  border: 2px solid var(--machined-black);
-  position: relative;
-  cursor: pointer;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 3px 6px rgba(0, 0, 0, 0.15);
-  padding: 4px;
-  transition: transform 0.1s ease;
-}
-
-.rocker-switch:active {
-  transform: scale(0.97);
-}
-
-.rocker-paddle {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, #df4d1e 0%, #b8360d 100%);
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.35);
-  transition: all 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 0;
-}
-
-.rocker-lens {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #6a1a05;
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
-  transition: all 0.15s ease;
-}
-
-.rocker-paddle span {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.7);
-  letter-spacing: 0.05em;
-}
-
-/* Rocker Switch States */
-.rocker-switch.active .rocker-paddle {
-  background: linear-gradient(180deg, #ff5500 0%, #e64700 100%);
-  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.35);
-  transform: translateY(2px);
-}
-
-.rocker-switch.active .rocker-lens {
-  background: #ffea79;
-  box-shadow: 0 0 12px #ffb300, 0 0 4px #ffffff, inset 0 1px 1px #ffffff;
-}
-
-/* Knurled Orange Fader Sliders (Image 2) */
-.faders-cluster {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  margin-bottom: 1.8rem;
-  background: var(--surface-recessed);
-  border: 1.5px solid var(--subtle-border);
+  background: var(--canvas-bg);
+  border: 1px solid var(--canvas-grid-bold);
   border-radius: 6px;
-  padding: 1rem;
+  padding: 2rem 2.5rem 12rem; /* Bottom padding accommodates physical console */
+  min-height: 580px;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.06);
 }
 
-.fader-row {
+/* Left Sidebar Callouts inside Blueprint */
+.blueprint-left-meta {
+  position: absolute;
+  left: 2rem;
+  top: 2rem;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  z-index: 5;
 }
 
-.fader-info {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+.meta-hex {
   font-weight: 700;
   color: var(--machined-black);
 }
 
-.fader-track {
-  height: 14px;
-  background: #18191c;
-  border-radius: 7px;
-  position: relative;
-  box-shadow: var(--shadow-recessed);
+.meta-bar-wrap {
   display: flex;
   align-items: center;
-  padding: 0 4px;
-  cursor: pointer;
+  gap: 0.75rem;
+  margin: 0.3rem 0;
 }
 
-.fader-fill {
+.safety-orange-bar {
+  width: 6px;
+  height: 140px;
+  background-color: var(--safety-orange);
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(255, 85, 0, 0.3);
+}
+
+.meta-num {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--machined-black);
+  line-height: 1;
+}
+
+.meta-sub {
+  color: #6b7280;
+  font-size: 0.7rem;
+}
+
+/* Drafting Dimension Lines & Compass Markers */
+.dimension-line {
   position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  background: var(--safety-orange);
-  border-radius: 7px;
+  border-color: #9ca3af;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #6b7280;
   pointer-events: none;
 }
 
-.fader-knob {
-  width: 22px;
-  height: 28px;
-  background: repeating-linear-gradient(
-    90deg,
-    #ff6a00,
-    #ff6a00 2px,
-    #d94600 2px,
-    #d94600 4px
-  );
-  border: 1.5px solid #000000;
-  border-radius: 3px;
+.dimension-horiz {
+  border-top: 1px dashed #b0b4be;
+  text-align: center;
+}
+
+.dimension-vert {
+  border-left: 1px dashed #b0b4be;
+  padding-left: 4px;
+}
+
+.compass-marker {
   position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  cursor: grab;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  z-index: 2;
-}
-
-.fader-knob:active {
-  cursor: grabbing;
-}
-
-/* 3x3 LED Status Matrix (Image 2) */
-.led-matrix-cluster {
-  background: #111214;
-  border-radius: 6px;
-  padding: 0.9rem;
-  border: 2px solid #000000;
-}
-
-.led-matrix-title {
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  font-weight: 700;
-  color: #8b8e96;
-  text-transform: uppercase;
-  margin-bottom: 0.6rem;
+  color: #9ca3af;
+  font-weight: 600;
+}
+
+.crosshair {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   3D PHYSICAL CARTRIDGE DOCK (Videos 2242 & 2244)
+   ========================================================================== */
+.cartridge-bay-stage {
+  position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto 0;
+  max-width: 820px;
+  perspective: 1200px;
+}
+
+.cartridge-dock-tray {
+  display: flex;
+  align-items: flex-end;
+  background: #18191c;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  padding: 0.75rem 1rem 0.5rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  position: relative;
+  gap: 0.6rem;
+}
+
+/* Primary Agentpipe Cartridge (White Matte Plastic) */
+.cartridge-primary-unit {
+  width: 320px;
+  height: 170px;
+  background: #ebebe6;
+  border: 2px solid #111214;
+  border-radius: 8px;
+  padding: 1.2rem;
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform: rotateX(12deg) rotateY(-4deg) translateY(-8px);
+  box-shadow: 
+    -4px 12px 24px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  transition: transform 0.3s var(--spring-snappy), box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
-.led-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
+.cartridge-primary-unit:hover {
+  transform: rotateX(6deg) rotateY(0deg) translateY(-22px) scale(1.03);
+  box-shadow: 
+    -6px 24px 38px rgba(0, 0, 0, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
 }
 
-.led-node {
+.cartridge-label-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cartridge-brand {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--machined-black);
+  letter-spacing: -0.03em;
+}
+
+.cartridge-chevrons {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #8b8e96;
+  letter-spacing: -0.1em;
+}
+
+/* Orange Illuminated Side LED Vent Slot */
+.cartridge-led-vent {
+  height: 8px;
+  background: #111214;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.4);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+}
+
+.vent-amber-glow {
+  position: absolute;
+  left: 20%;
+  width: 45%;
+  height: 100%;
+  background: #ff5500;
+  box-shadow: 0 0 10px #ff5500, 0 0 4px #ffaa00;
+  border-radius: 3px;
+  animation: pulse-vent 2.4s infinite ease-in-out;
+}
+
+@keyframes pulse-vent {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.cartridge-sub-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #6b7280;
+  font-weight: 700;
+}
+
+.oled-badge {
+  background: #111214;
+  color: #4ade80;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.8);
+}
+
+/* Secondary Slotted Cartridges (Translucent / PCB Look) */
+.cartridge-slot-mini {
+  width: 76px;
+  height: 140px;
+  background: #282a30;
+  border: 1.5px solid #111214;
+  border-radius: 6px;
+  padding: 0.5rem;
+  position: relative;
+  cursor: pointer;
+  transform: rotateX(12deg) rotateY(-4deg);
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: -2px 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.cartridge-slot-mini:hover {
+  transform: rotateX(6deg) translateY(-14px);
+  background: #363942;
+  box-shadow: -4px 14px 22px rgba(0, 0, 0, 0.35);
+}
+
+.slot-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #18191c;
+  border: 1px solid #4a4d55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e5e7eb;
+  font-size: 0.7rem;
+  margin: 0 auto;
+}
+
+.slot-pcb-pins {
+  height: 12px;
+  background: repeating-linear-gradient(
+    90deg,
+    #d97706,
+    #d97706 2px,
+    #18191c 2px,
+    #18191c 4px
+  );
+  border-radius: 2px;
+}
+
+/* Tooltip Badge on Cartridge (Matching Video 2242 3s) */
+.cartridge-tooltip-badge {
+  position: absolute;
+  top: -26px;
+  right: 20px;
+  background: #18191c;
+  color: #e5e7eb;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #3b3e47;
+  pointer-events: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* ==========================================================================
+   PHYSICAL HARDWARE SYNTHESIZER CONSOLE (Video 2244 Close-Up)
+   ========================================================================== */
+.physical-synth-console {
+  position: absolute;
+  bottom: -30px;
+  right: 2rem;
+  width: 520px;
+  background: #ebebe6;
+  border: 2.5px solid #111214;
+  border-radius: 10px;
+  padding: 1.2rem 1.6rem;
+  box-shadow: 
+    0 18px 36px rgba(0, 0, 0, 0.24),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.9);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .physical-synth-console {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    margin-top: 2rem;
+  }
+}
+
+.console-screws {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.console-screws .screw:nth-child(1) { position: absolute; top: 6px; left: 6px; }
+.console-screws .screw:nth-child(2) { position: absolute; top: 6px; right: 6px; }
+.console-screws .screw:nth-child(3) { position: absolute; bottom: 6px; left: 6px; }
+.console-screws .screw:nth-child(4) { position: absolute; bottom: 6px; right: 6px; }
+
+.console-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #d1d5db;
+  padding-bottom: 0.4rem;
+}
+
+.console-model-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--machined-black);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Console Control Elements Grid */
+.console-controls-grid {
+  display: grid;
+  grid-template-columns: 130px 1fr 90px;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* Left: Pushbuttons and Chrome Bat Toggles */
+.console-buttons-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.btn-pair {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* Matte Black Pushbutton */
+.push-btn-black {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #383a40 0%, #18191c 70%, #0c0d0f 100%);
+  border: 1.5px solid #000000;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transition: transform 0.08s ease;
+}
+
+.push-btn-black:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Translucent Glowing Orange Dome Indicator */
+.orange-dome-indicator {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffb347 0%, #ff5500 70%, #cc3700 100%);
+  border: 1px solid #992800;
+  box-shadow: 0 0 14px rgba(255, 85, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.orange-dome-indicator:active {
+  transform: scale(0.95);
+}
+
+/* Chrome Metal Bat Toggle Switches with Hexagonal Nuts */
+.toggle-pair {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.chrome-bat-unit {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
 }
 
-.led-bulb {
-  width: 14px;
-  height: 14px;
+.hex-nut-base {
+  width: 20px;
+  height: 20px;
+  background: #b5b8c0;
+  border: 1px solid #4a4d53;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.bat-lever {
+  width: 6px;
+  height: 22px;
+  background: linear-gradient(90deg, #9ca3af 0%, #f3f4f6 50%, #6b7280 100%);
+  border-radius: 3px 3px 1px 1px;
+  transform-origin: bottom center;
+  transform: rotate(-16deg);
+  transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.chrome-bat-unit.active .bat-lever {
+  transform: rotate(16deg);
+}
+
+.toggle-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #4b4e56;
+}
+
+/* Center: Dual Horizontal Faders with Calibrated Tick Marks */
+.console-faders-track {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.groove-slider-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.slider-groove {
+  height: 6px;
+  background: #111214;
+  border-radius: 3px;
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.knurled-fader-knob {
+  width: 18px;
+  height: 24px;
+  background: radial-gradient(circle at 50% 30%, #3a3c42 0%, #18191c 80%);
+  border: 1.5px solid #000000;
+  border-radius: 3px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  cursor: grab;
+}
+
+.knurled-fader-knob::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 16px;
+  background: #ffffff;
+  border-radius: 1px;
+}
+
+/* Calibrated Tick Marks (0 - 10) */
+.calibrated-ticks {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2px;
+}
+
+.calibrated-ticks span {
+  width: 1px;
+  height: 4px;
+  background: #9ca3af;
+}
+
+.calibrated-ticks span:nth-child(5n+1) {
+  height: 7px;
+  background: #4b4e56;
+}
+
+/* Right: Large Knurled Rotary Dial */
+.console-rotary-dial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.rotary-knob-casing {
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
-  border: 1px solid #000000;
+  background: repeating-conic-gradient(
+    #24262b 0deg 6deg,
+    #18191c 6deg 12deg
+  );
+  border: 2px solid #000000;
+  position: relative;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.35), inset 0 1px 2px rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  transform: rotate(0deg);
+  transition: transform 0.1s ease;
+}
+
+.rotary-knob-casing:active {
+  cursor: grabbing;
+}
+
+.rotary-cap-center {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #42454d 0%, #1f2126 80%);
   position: relative;
 }
 
-.led-bulb.green {
-  background: var(--led-green-bg);
-  box-shadow: 0 0 10px var(--led-green-glow);
+.rotary-indicator-line {
+  position: absolute;
+  top: 4px;
+  left: calc(50% - 1.5px);
+  width: 3px;
+  height: 12px;
+  background: #ffffff;
+  border-radius: 1.5px;
 }
 
-.led-bulb.yellow {
-  background: var(--led-yellow-bg);
-  box-shadow: 0 0 10px var(--led-yellow-glow);
-}
-
-.led-bulb.red {
-  background: var(--led-red-bg);
-  box-shadow: 0 0 10px var(--led-red-glow);
-}
-
-.led-caption {
+.rotary-label {
   font-family: var(--font-mono);
-  font-size: 0.58rem;
-  color: #b0b4be;
-  text-transform: uppercase;
-  font-weight: 600;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #4b4e56;
 }
 
 /* ==========================================================================
-   PROJECT CARTRIDGES (Storyboard Panel 3, 4 & Image 2)
+   PROJECT CARTRIDGES (Lower Section)
    ========================================================================== */
 .projects-section {
   padding: 4.5rem 0;
@@ -792,7 +1042,6 @@
 
 /* ==========================================================================
    OSCILLOSCOPE VIDEO MONITOR MODAL
-   Hardware Bezel Housing YouTube Video Walkthroughs
    ========================================================================== */
 .hardware-modal-overlay {
   position: fixed;
