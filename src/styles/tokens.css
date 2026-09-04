@@ -71,6 +71,8 @@ html {
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -78,6 +80,8 @@ body {
   color: var(--machined-black);
   font-family: var(--font-body);
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
   line-height: 1.5;
   /* Blueprint Graph Paper Background */
   background-image: 
@@ -95,6 +99,18 @@ body {
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.85rem;
+  }
 }
 
 .mono {

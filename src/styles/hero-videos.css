@@ -132,16 +132,52 @@
   object-fit: cover;
 }
 
-/* Responsive adjustment for floating console */
+/* Responsive adjustments for mobile & tablet */
 @media (max-width: 960px) {
   .hero-unified-canvas {
-    padding-bottom: 2rem;
+    padding: 2rem 1.5rem;
+    min-height: auto;
   }
   .synth-console-video-floating {
     position: relative;
     bottom: 0;
     right: 0;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-unified-canvas {
+    padding: 1.25rem 0.85rem;
+    margin-top: 1rem;
+    border-radius: 6px;
+  }
+  
+  /* Hide overlapping drafting dimension texts and compass markers on mobile */
+  .drafting-dimension,
+  .compass-marker,
+  .crosshair,
+  .unified-left-meta {
+    display: none !important;
+  }
+
+  .dock-video-stage {
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 6px;
+  }
+
+  .synth-console-video-floating {
+    margin-top: 1rem;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-unified-canvas {
+    padding: 0.85rem 0.6rem;
   }
 }
